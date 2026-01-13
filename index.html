@@ -56,7 +56,7 @@
           color: "from-amber-600 to-amber-700",
           accent: "bg-amber-600",
           ring: "ring-amber-500",
-          features: ["50 Mbps Download", "50 Mbps Upload", "Unlimited Data", "24/7 VIP Support"],
+          features: ["50 Mbps Download", "50 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
           badge: null,
           router: { name: "Basic Wi-Fi Router", leasePrice: 5.99 },
         },
@@ -92,7 +92,7 @@
           color: "from-yellow-500 to-yellow-600",
           accent: "bg-yellow-500",
           ring: "ring-yellow-400",
-          features: ["1 Gbps Download", "1 Gbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install", "Static IP Available"],
+          features: ["1 Gbps Download", "1 Gbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
           badge: "Best Value",
           router: { name: "Wi-Fi 6E Mesh System", leasePrice: 5.99 },
         },
@@ -243,6 +243,120 @@
         }, 1500);
       };
 
+      // Contract Modal Component
+      const ContractModal = () => {
+        if (!showContractModal) return null;
+        
+        return (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" onClick={() => setShowContractModal(false)}>
+            <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+              {/* Header */}
+              <div className="bg-orange-500 text-white p-6 rounded-t-2xl flex-shrink-0">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h2 className="text-2xl font-bold">Internet Service Agreement</h2>
+                    <p className="text-orange-100 mt-1">Spaces Connect at Autumn Hollow</p>
+                  </div>
+                  <button onClick={() => setShowContractModal(false)} className="text-white hover:text-orange-200 text-2xl font-bold">×</button>
+                </div>
+              </div>
+              
+              {/* Scrollable Content */}
+              <div className="p-6 overflow-y-auto flex-1 min-h-0">
+                <div className="space-y-6 text-sm text-slate-700">
+                  
+                  {/* Parties */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">PARTIES</h3>
+                    <p className="mb-2"><strong>Provider:</strong> Spaces Connect, LLC<br/>1848 S Country Hill Lane, Springfield, MO 65809</p>
+                    <p><strong>Customer:</strong> As identified in the service signup form<br/>Property: 1000 Autumn Hollow Dr, Wentzville, MO 63385</p>
+                  </section>
+
+                  {/* Section 1 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">1. SERVICE DESCRIPTION</h3>
+                    <p>Spaces Connect agrees to provide high-speed internet service to the Customer at the property address listed above. Service includes the internet plan selected by the Customer, with speeds and features as described at the time of signup.</p>
+                  </section>
+
+                  {/* Section 2 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">2. TERM AND RENEWAL</h3>
+                    <p>This Agreement begins on the service activation date and continues for the term selected by the Customer. Upon expiration of the initial term, this Agreement will automatically renew on a month-to-month basis unless either party provides written notice of termination at least thirty (30) days prior to the end of the current term.</p>
+                  </section>
+
+                  {/* Section 3 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">3. PRICING AND PAYMENT</h3>
+                    <p className="mb-2">Customer agrees to pay the monthly service fee for their selected plan, plus any applicable equipment lease fees, taxes, and one-time charges as disclosed at signup.</p>
+                    <p className="mb-2">Payment is due on the same date each month as the original service activation. Payments can be made through the Zone customer portal or via Stripe payment processing.</p>
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 my-3">
+                      <p className="text-green-800"><strong>IF CUSTOMER QUALIFIES FOR CONTRACT DISCOUNT:</strong> Customer will receive a 10% discount on the base monthly service plan price for the duration of the contract term. This discount applies exclusively to the base plan price and does not apply to equipment lease fees, installation charges, taxes, or any other associated fees.</p>
+                    </div>
+                  </section>
+
+                  {/* Section 4 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">4. EQUIPMENT</h3>
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 my-3">
+                      <p className="text-blue-800"><strong>IF LEASING ROUTER:</strong> Spaces Connect will provide a router for the Customer's use during the service term. The router remains the property of Spaces Connect. Customer is responsible for any damage to the equipment beyond normal wear and tear. Upon termination of service, Customer must return the equipment in good working condition or pay the replacement cost.</p>
+                    </div>
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 my-3">
+                      <p className="text-amber-800"><strong>IF NOT LEASING ROUTER:</strong> Customer will use their own compatible equipment. Spaces Connect is not responsible for the performance or compatibility of customer-owned equipment.</p>
+                    </div>
+                  </section>
+
+                  {/* Section 5 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">5. EARLY TERMINATION</h3>
+                    <p>If Customer terminates service before the end of their contract term, an early termination fee of <strong>$50.00 per remaining month</strong> will apply. No early termination fee applies to month-to-month customers or customers who have completed their initial contract term.</p>
+                  </section>
+
+                  {/* Section 6 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">6. SERVICE LEVEL</h3>
+                    <p>Spaces Connect will make commercially reasonable efforts to provide consistent, reliable internet service. Internet speeds are provided on a "best effort" basis and may vary based on network conditions, customer equipment, and other factors. Spaces Connect does not guarantee specific speeds at all times.</p>
+                  </section>
+
+                  {/* Section 7 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">7. ACCEPTABLE USE</h3>
+                    <p>Customer agrees to use the service in compliance with all applicable laws and regulations. Customer shall not use the service for any illegal purpose, to transmit harmful or malicious content, or in any way that interferes with other customers' use of the network.</p>
+                  </section>
+
+                  {/* Section 8 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">8. LIMITATION OF LIABILITY</h3>
+                    <p>Spaces Connect's liability for any claim arising from this Agreement shall not exceed the total amount paid by Customer for service during the three (3) months preceding the claim. Spaces Connect shall not be liable for any indirect, incidental, or consequential damages.</p>
+                  </section>
+
+                  {/* Section 9 */}
+                  <section>
+                    <h3 className="font-bold text-lg text-slate-800 mb-2">9. CONTACT INFORMATION</h3>
+                    <p className="mb-2">For questions, support, or to provide notice under this Agreement:</p>
+                    <p><strong>Email:</strong> sales@spacesbroadband.com</p>
+                  </section>
+
+                  {/* Signature Block */}
+                  <section className="border-t pt-4 mt-6">
+                    <p className="text-slate-600 italic">By completing the online signup form and submitting your order, you acknowledge that you have read, understand, and agree to the terms and conditions of this Internet Service Agreement.</p>
+                    <div className="mt-4">
+                      <p className="font-medium text-slate-800">Spaces Connect, LLC</p>
+                      <p className="text-slate-600">Danielle F., Operations Manager</p>
+                    </div>
+                  </section>
+
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="p-4 border-t flex-shrink-0">
+                <button onClick={() => setShowContractModal(false)} className="w-full bg-orange-500 text-white py-3 rounded-xl font-semibold hover:bg-orange-600 transition-colors">Close</button>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
       // Step 5: Confirmation
       if (step === 5 && selected) {
         const showContractStep = formData.leaseLength === "15+" && formData.wantsContract;
@@ -358,6 +472,8 @@
       // Step 4: Contract Details
       if (step === 4 && selected && formData.leaseLength === "15+" && formData.wantsContract) {
         return (
+          <>
+          <ContractModal />
           <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
             <div className="max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-4 mb-10">
@@ -452,6 +568,7 @@
               </div>
             </div>
           </div>
+          </>
         );
       }
 
@@ -691,7 +808,7 @@
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <h1 className="text-4xl font-bold text-white mb-3">Choose Your Plan</h1>
-              <p className="text-slate-300 text-lg">Lightning-fast fiber internet for your home</p>
+              <p className="text-slate-300 text-lg">Lightning-fast fiber internet for your apartment unit</p>
             </div>
 
             <div className="flex items-center justify-center gap-4 mb-10">
