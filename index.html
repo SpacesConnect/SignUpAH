@@ -3,15 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spaces Connect - Internet Signup</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Autumn Hollow Internet Signup - Spaces Broadband</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --coral: #C75B4B;
+      --coral-light: #E07A6B;
+      --coral-dark: #A84A3C;
+      --dark: #0A0A0A;
+      --dark-card: #1A1A1A;
+      --dark-lighter: #2A2A2A;
+      --white: #FFFFFF;
+      --gray: #888888;
+      --gray-light: #CCCCCC;
+      --success: #4CAF50;
+      --success-dark: #388E3C;
+      --warning: #F59E0B;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      min-height: 100vh;
+    }
+    
+    /* Fiber Background */
+    .fiber-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .fiber-bg svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .fiber-line {
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      opacity: 0.3;
+    }
+    
+    .fiber-line.glow {
+      stroke-width: 4;
+      opacity: 0.1;
+    }
+    
+    .fiber-line.c1 { stroke: var(--coral); }
+    .fiber-line.c2 { stroke: var(--coral-light); }
+    .fiber-line.c3 { stroke: rgba(199, 91, 75, 0.6); }
+    
+    .fiber-light {
+      fill: none;
+      stroke: var(--coral-light);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 50 2000;
+      opacity: 0;
+    }
+    
+    @keyframes fiberFlow1 {
+      0% { stroke-dashoffset: 2050; opacity: 0; }
+      5% { opacity: 0.8; }
+      95% { opacity: 0.8; }
+      100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    
+    .fiber-light.l1 { animation: fiberFlow1 12s linear infinite; }
+    .fiber-light.l2 { animation: fiberFlow1 12s linear infinite 4s; }
+    .fiber-light.l3 { animation: fiberFlow1 12s linear infinite 8s; }
+  </style>
 </head>
 <body>
+  <!-- Fiber Background -->
+  <div class="fiber-bg">
+    <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+      <path class="fiber-line glow c1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"/>
+      <path class="fiber-line c1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"/>
+      <path class="fiber-line glow c2" d="M-100,950 Q350,900 550,750 T950,550 T1350,400 T1750,250 T2100,100"/>
+      <path class="fiber-line c2" d="M-100,950 Q350,900 550,750 T950,550 T1350,400 T1750,250 T2100,100"/>
+      <path class="fiber-line glow c3" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"/>
+      <path class="fiber-line c3" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"/>
+      <path class="fiber-light l1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"/>
+      <path class="fiber-light l2" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"/>
+      <path class="fiber-light l3" d="M-100,800 Q500,750 700,600 T1100,400 T1500,250 T1900,100 T2100,-50"/>
+    </svg>
+  </div>
+  
   <div id="root"></div>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
+    // Styles object for the new theme
+    const styles = {
+      // Colors
+      coral: '#C75B4B',
+      coralLight: '#E07A6B',
+      coralDark: '#A84A3C',
+      dark: '#0A0A0A',
+      darkCard: '#1A1A1A',
+      darkLighter: '#2A2A2A',
+      white: '#FFFFFF',
+      gray: '#888888',
+      grayLight: '#CCCCCC',
+      success: '#4CAF50',
+      successDark: '#388E3C',
+      warning: '#F59E0B',
+    };
+
     function PlanSelector() {
       const [selectedPlan, setSelectedPlan] = React.useState(null);
       const [step, setStep] = React.useState(1);
@@ -53,9 +170,6 @@
           name: "Copper",
           speed: "50",
           price: 49.99,
-          color: "from-amber-600 to-amber-700",
-          accent: "bg-amber-600",
-          ring: "ring-amber-500",
           features: ["50 Mbps Download", "50 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
           badge: null,
           router: { name: "Basic Wi-Fi Router", leasePrice: 5.99 },
@@ -65,9 +179,6 @@
           name: "Bronze",
           speed: "100",
           price: 69.99,
-          color: "from-orange-700 to-orange-800",
-          accent: "bg-orange-700",
-          ring: "ring-orange-600",
           features: ["100 Mbps Download", "100 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
           badge: null,
           router: { name: "Standard Wi-Fi Router", leasePrice: 5.99 },
@@ -77,9 +188,6 @@
           name: "Silver",
           speed: "300",
           price: 79.99,
-          color: "from-slate-500 to-slate-600",
-          accent: "bg-slate-500",
-          ring: "ring-slate-400",
           features: ["300 Mbps Download", "300 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
           badge: "Popular",
           router: { name: "Premium Wi-Fi 6 Router", leasePrice: 5.99 },
@@ -89,9 +197,6 @@
           name: "Gold",
           speed: "1000",
           price: 89.99,
-          color: "from-yellow-500 to-yellow-600",
-          accent: "bg-yellow-500",
-          ring: "ring-yellow-400",
           features: ["1 Gbps Download", "1 Gbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
           badge: "Best Value",
           router: { name: "Wi-Fi 6E Mesh System", leasePrice: 5.99 },
@@ -243,114 +348,192 @@
         }, 1500);
       };
 
+      // Styled Components
+      const containerStyle = {
+        minHeight: '100vh',
+        padding: '2rem 1.5rem',
+        position: 'relative',
+        zIndex: 2,
+      };
+
+      const cardStyle = {
+        background: 'rgba(26, 26, 26, 0.95)',
+        border: '1px solid rgba(255,255,255,0.1)',
+        borderRadius: '20px',
+        padding: '2rem',
+        backdropFilter: 'blur(10px)',
+      };
+
+      const inputStyle = {
+        width: '100%',
+        padding: '0.875rem 1rem',
+        background: 'rgba(42, 42, 42, 0.8)',
+        border: '2px solid rgba(255,255,255,0.1)',
+        borderRadius: '12px',
+        color: '#FFFFFF',
+        fontSize: '1rem',
+        fontFamily: 'Outfit, sans-serif',
+        outline: 'none',
+        transition: 'all 0.3s ease',
+      };
+
+      const labelStyle = {
+        display: 'block',
+        fontSize: '0.9rem',
+        fontWeight: '500',
+        color: '#CCCCCC',
+        marginBottom: '0.5rem',
+      };
+
+      const primaryBtnStyle = {
+        background: '#C75B4B',
+        color: '#FFFFFF',
+        padding: '1rem 2rem',
+        borderRadius: '12px',
+        border: 'none',
+        fontSize: '1rem',
+        fontWeight: '600',
+        fontFamily: 'Outfit, sans-serif',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem',
+      };
+
+      const secondaryBtnStyle = {
+        background: 'transparent',
+        color: '#CCCCCC',
+        padding: '1rem 2rem',
+        borderRadius: '12px',
+        border: '2px solid rgba(255,255,255,0.2)',
+        fontSize: '1rem',
+        fontWeight: '600',
+        fontFamily: 'Outfit, sans-serif',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+      };
+
+      // Step Indicator Component
+      const StepIndicator = ({ steps, currentStep }) => (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+          {steps.map((s, idx) => (
+            <div key={s.num} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {idx > 0 && <div style={{ width: '2rem', height: '2px', background: s.num <= currentStep ? '#C75B4B' : 'rgba(255,255,255,0.2)', marginLeft: '-0.25rem', marginRight: '0.25rem' }}></div>}
+              <div style={{
+                width: '2rem',
+                height: '2rem',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: '600',
+                fontSize: '0.875rem',
+                background: s.num <= currentStep ? '#C75B4B' : 'rgba(255,255,255,0.1)',
+                color: s.num <= currentStep ? '#FFFFFF' : '#888888',
+              }}>{s.num}</div>
+              <span style={{ color: '#888888', fontSize: '0.875rem', display: 'none' }}>{s.label}</span>
+            </div>
+          ))}
+        </div>
+      );
+
       // Contract Modal Component
       const ContractModal = () => {
         if (!showContractModal) return null;
         
         return (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4" onClick={() => setShowContractModal(false)}>
-            <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+          <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }} onClick={() => setShowContractModal(false)}>
+            <div style={{ background: '#1A1A1A', borderRadius: '20px', maxWidth: '800px', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.1)' }} onClick={(e) => e.stopPropagation()}>
               {/* Header */}
-              <div className="bg-orange-500 text-white p-6 rounded-t-2xl flex-shrink-0">
-                <div className="flex justify-between items-start">
+              <div style={{ background: '#C75B4B', padding: '1.5rem', borderRadius: '20px 20px 0 0' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <div>
-                    <h2 className="text-2xl font-bold">Internet Service Agreement</h2>
-                    <p className="text-orange-100 mt-1">Spaces Connect at Autumn Hollow</p>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', margin: 0 }}>Internet Service Agreement</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.8)', marginTop: '0.25rem' }}>Spaces Broadband at Autumn Hollow</p>
                   </div>
-                  <button onClick={() => setShowContractModal(false)} className="text-white hover:text-orange-200 text-2xl font-bold">×</button>
+                  <button onClick={() => setShowContractModal(false)} style={{ background: 'none', border: 'none', color: '#FFFFFF', fontSize: '1.5rem', cursor: 'pointer', lineHeight: 1 }}>×</button>
                 </div>
               </div>
               
               {/* Scrollable Content */}
-              <div className="p-6 overflow-y-auto flex-1 min-h-0">
-                <div className="space-y-6 text-sm text-slate-700">
-                  
-                  {/* Parties */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">PARTIES</h3>
-                    <p className="mb-2"><strong>Provider:</strong> Spaces Connect, LLC<br/>1848 S Country Hill Lane, Springfield, MO 65809</p>
+              <div style={{ padding: '1.5rem', overflowY: 'auto', flex: 1 }}>
+                <div style={{ fontSize: '0.9rem', color: '#CCCCCC', lineHeight: 1.7 }}>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>PARTIES</h3>
+                    <p style={{ marginBottom: '0.5rem' }}><strong>Provider:</strong> Spaces Connect, LLC<br/>1848 S Country Hill Lane, Springfield, MO 65809</p>
                     <p><strong>Customer:</strong> As identified in the service signup form<br/>Property: 1000 Autumn Hollow Dr, Wentzville, MO 63385</p>
                   </section>
 
-                  {/* Section 1 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">1. SERVICE DESCRIPTION</h3>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>1. SERVICE DESCRIPTION</h3>
                     <p>Spaces Connect agrees to provide high-speed internet service to the Customer at the property address listed above. Service includes the internet plan selected by the Customer, with speeds and features as described at the time of signup.</p>
                   </section>
 
-                  {/* Section 2 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">2. TERM AND RENEWAL</h3>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>2. TERM AND RENEWAL</h3>
                     <p>This Agreement begins on the service activation date and continues for the term selected by the Customer. Upon expiration of the initial term, this Agreement will automatically renew on a month-to-month basis unless either party provides written notice of termination at least thirty (30) days prior to the end of the current term.</p>
                   </section>
 
-                  {/* Section 3 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">3. PRICING AND PAYMENT</h3>
-                    <p className="mb-2">Customer agrees to pay the monthly service fee for their selected plan, plus any applicable equipment lease fees, taxes, and one-time charges as disclosed at signup.</p>
-                    <p className="mb-2">Payment is due on the same date each month as the original service activation. Payments can be made through the Zone customer portal or via Stripe payment processing.</p>
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 my-3">
-                      <p className="text-green-800"><strong>IF CUSTOMER QUALIFIES FOR CONTRACT DISCOUNT:</strong> Customer will receive a 10% discount on the base monthly service plan price for the duration of the contract term. This discount applies exclusively to the base plan price and does not apply to equipment lease fees, installation charges, taxes, or any other associated fees.</p>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>3. PRICING AND PAYMENT</h3>
+                    <p style={{ marginBottom: '0.5rem' }}>Customer agrees to pay the monthly service fee for their selected plan, plus any applicable equipment lease fees, taxes, and one-time charges as disclosed at signup.</p>
+                    <p style={{ marginBottom: '0.5rem' }}>Payment is due on the same date each month as the original service activation. Payments can be made through the Zone customer portal or via Stripe payment processing.</p>
+                    <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '12px', padding: '1rem', margin: '1rem 0' }}>
+                      <p style={{ color: '#4CAF50' }}><strong>IF CUSTOMER QUALIFIES FOR CONTRACT DISCOUNT:</strong> Customer will receive a 10% discount on the base monthly service plan price for the duration of the contract term. This discount applies exclusively to the base plan price and does not apply to equipment lease fees, installation charges, taxes, or any other associated fees.</p>
                     </div>
                   </section>
 
-                  {/* Section 4 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">4. EQUIPMENT</h3>
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 my-3">
-                      <p className="text-blue-800"><strong>IF LEASING ROUTER:</strong> Spaces Connect will provide a router for the Customer's use during the service term. The router remains the property of Spaces Connect. Customer is responsible for any damage to the equipment beyond normal wear and tear. Upon termination of service, Customer must return the equipment in good working condition or pay the replacement cost.</p>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>4. EQUIPMENT</h3>
+                    <div style={{ background: 'rgba(199, 91, 75, 0.1)', border: '1px solid rgba(199, 91, 75, 0.3)', borderRadius: '12px', padding: '1rem', margin: '1rem 0' }}>
+                      <p style={{ color: '#E07A6B' }}><strong>IF LEASING ROUTER:</strong> Spaces Connect will provide a router for the Customer's use during the service term. The router remains the property of Spaces Connect. Customer is responsible for any damage to the equipment beyond normal wear and tear. Upon termination of service, Customer must return the equipment in good working condition or pay the replacement cost.</p>
                     </div>
-                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 my-3">
-                      <p className="text-amber-800"><strong>IF NOT LEASING ROUTER:</strong> Customer will use their own compatible equipment. Spaces Connect is not responsible for the performance or compatibility of customer-owned equipment.</p>
+                    <div style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '12px', padding: '1rem', margin: '1rem 0' }}>
+                      <p style={{ color: '#F59E0B' }}><strong>IF NOT LEASING ROUTER:</strong> Customer will use their own compatible equipment. Spaces Connect is not responsible for the performance or compatibility of customer-owned equipment.</p>
                     </div>
                   </section>
 
-                  {/* Section 5 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">5. EARLY TERMINATION</h3>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>5. EARLY TERMINATION</h3>
                     <p>If Customer terminates service before the end of their contract term, an early termination fee of <strong>$50.00 per remaining month</strong> will apply. No early termination fee applies to month-to-month customers or customers who have completed their initial contract term.</p>
                   </section>
 
-                  {/* Section 6 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">6. SERVICE LEVEL</h3>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>6. SERVICE LEVEL</h3>
                     <p>Spaces Connect will make commercially reasonable efforts to provide consistent, reliable internet service. Internet speeds are provided on a "best effort" basis and may vary based on network conditions, customer equipment, and other factors. Spaces Connect does not guarantee specific speeds at all times.</p>
                   </section>
 
-                  {/* Section 7 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">7. ACCEPTABLE USE</h3>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>7. ACCEPTABLE USE</h3>
                     <p>Customer agrees to use the service in compliance with all applicable laws and regulations. Customer shall not use the service for any illegal purpose, to transmit harmful or malicious content, or in any way that interferes with other customers' use of the network.</p>
                   </section>
 
-                  {/* Section 8 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">8. LIMITATION OF LIABILITY</h3>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>8. LIMITATION OF LIABILITY</h3>
                     <p>Spaces Connect's liability for any claim arising from this Agreement shall not exceed the total amount paid by Customer for service during the three (3) months preceding the claim. Spaces Connect shall not be liable for any indirect, incidental, or consequential damages.</p>
                   </section>
 
-                  {/* Section 9 */}
-                  <section>
-                    <h3 className="font-bold text-lg text-slate-800 mb-2">9. CONTACT INFORMATION</h3>
-                    <p className="mb-2">For questions, support, or to provide notice under this Agreement:</p>
+                  <section style={{ marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>9. CONTACT INFORMATION</h3>
+                    <p style={{ marginBottom: '0.5rem' }}>For questions, support, or to provide notice under this Agreement:</p>
                     <p><strong>Email:</strong> sales@spacesbroadband.com</p>
                   </section>
 
-                  {/* Signature Block */}
-                  <section className="border-t pt-4 mt-6">
-                    <p className="text-slate-600 italic">By completing the online signup form and submitting your order, you acknowledge that you have read, understand, and agree to the terms and conditions of this Internet Service Agreement.</p>
-                    <div className="mt-4">
-                      <p className="font-medium text-slate-800">Spaces Connect, LLC</p>
-                      <p className="text-slate-600">Danielle F., Operations Manager</p>
+                  <section style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem', marginTop: '1.5rem' }}>
+                    <p style={{ color: '#888888', fontStyle: 'italic' }}>By completing the online signup form and submitting your order, you acknowledge that you have read, understand, and agree to the terms and conditions of this Internet Service Agreement.</p>
+                    <div style={{ marginTop: '1rem' }}>
+                      <p style={{ fontWeight: '500', color: '#FFFFFF' }}>Spaces Connect, LLC</p>
+                      <p style={{ color: '#888888' }}>Danielle F., Operations Manager</p>
                     </div>
                   </section>
-
                 </div>
               </div>
 
               {/* Footer */}
-              <div className="p-4 border-t flex-shrink-0">
-                <button onClick={() => setShowContractModal(false)} className="w-full bg-orange-500 text-white py-3 rounded-xl font-semibold hover:bg-orange-600 transition-colors">Close</button>
+              <div style={{ padding: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                <button onClick={() => setShowContractModal(false)} style={{ ...primaryBtnStyle, width: '100%' }}>Close</button>
               </div>
             </div>
           </div>
@@ -366,99 +549,91 @@
         const currentStep = showContractStep ? 5 : 4;
         
         return (
-          <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
-            <div className="max-w-2xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-10">
-                {steps.map((s, idx) => (
-                  <div key={s.num} className="flex items-center gap-2">
-                    {idx > 0 && <div className={`w-8 h-0.5 ${s.num <= currentStep ? "bg-blue-500" : "bg-slate-600"} -ml-2 mr-2`}></div>}
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${s.num <= currentStep ? "bg-blue-500 text-white" : "bg-slate-600 text-slate-400"}`}>{s.num}</div>
-                    <span className="text-slate-400 text-sm hidden sm:inline">{s.label}</span>
-                  </div>
-                ))}
-              </div>
+          <div style={containerStyle}>
+            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+              <StepIndicator steps={steps} currentStep={currentStep} />
 
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Order Confirmation</h2>
+              <div style={cardStyle}>
+                <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '1.5rem', textAlign: 'center' }}>Order Confirmation</h2>
                 
-                <div className="mb-8 p-5 bg-slate-50 rounded-xl">
-                  <h4 className="font-semibold text-gray-700 mb-3">Order Summary</h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between"><span className="text-slate-500">Tenant:</span><span className="font-medium text-slate-800">{formData.tenant}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Unit:</span><span className="font-medium text-slate-800">{formData.unit}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Email:</span><span className="font-medium text-slate-800">{formData.email}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Phone:</span><span className="font-medium text-slate-800">{formData.phone}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Plan:</span><span className="font-medium text-slate-800">{selected.name}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Lease Length:</span><span className="font-medium text-slate-800">{formData.leaseLength === "15+" && formData.specificLeaseMonths ? `${formData.specificLeaseMonths} Months` : leaseLengthOptions.find(l => l.value === formData.leaseLength)?.label}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Router:</span><span className="font-medium text-slate-800">{formData.leaseLength === "0-6" ? (formData.routerInfo === "byod" ? "Use Your Own" : "Leased Router") : (formData.routerInfo === "byod" ? "Bring Your Own Device" : `${selected.router.name} (Leased)`)}</span></div>
-                    <div className="flex justify-between"><span className="text-slate-500">Installation:</span><span className="font-medium text-slate-800">{installOptions.find(i => i.value === formData.installOption)?.label}</span></div>
+                <div style={{ marginBottom: '2rem', padding: '1.25rem', background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px' }}>
+                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Order Summary</h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Tenant:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.tenant}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Unit:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.unit}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Email:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.email}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Phone:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.phone}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Plan:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{selected.name}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Lease Length:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.leaseLength === "15+" && formData.specificLeaseMonths ? `${formData.specificLeaseMonths} Months` : leaseLengthOptions.find(l => l.value === formData.leaseLength)?.label}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Router:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.leaseLength === "0-6" ? (formData.routerInfo === "byod" ? "Use Your Own" : "Leased Router") : (formData.routerInfo === "byod" ? "Bring Your Own Device" : `${selected.router.name} (Leased)`)}</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Installation:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{installOptions.find(i => i.value === formData.installOption)?.label}</span></div>
                     {formData.leaseLength === "15+" && formData.wantsContract && (
-                      <div className="flex justify-between"><span className="text-slate-500">Contract:</span><span className="font-medium text-slate-800">{formData.specificLeaseMonths ? `${formData.specificLeaseMonths}-Month Service Contract` : "Service Contract (matches lease length)"}</span></div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Contract:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.specificLeaseMonths ? `${formData.specificLeaseMonths}-Month Service Contract` : "Service Contract (matches lease length)"}</span></div>
                     )}
                   </div>
                 </div>
 
-                <div className="mb-8 border-t pt-6">
-                  <h4 className="font-semibold text-gray-700 mb-4">Monthly Pricing</h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between"><span className="text-slate-600">{selected.name} Plan</span><span>${selected.price.toFixed(2)}</span></div>
-                    {formData.routerInfo === "lease" && <div className="flex justify-between"><span className="text-slate-600">Router Lease</span><span>+${formData.leaseLength === "0-6" ? "15.00" : selected.router.leasePrice.toFixed(2)}</span></div>}
-                    {formData.leaseLength === "15+" && formData.wantsContract && <div className="flex justify-between text-green-600"><span>Contract Discount (10% off)</span><span>-${(selected.price * 0.10).toFixed(2)}</span></div>}
-                    <div className="flex justify-between pt-3 border-t text-lg font-bold"><span>Monthly Total</span><span className="text-blue-600">${calculateTotal().toFixed(2)}/mo</span></div>
+                <div style={{ marginBottom: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
+                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Monthly Pricing</h4>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>{selected.name} Plan</span><span>${selected.price.toFixed(2)}</span></div>
+                    {formData.routerInfo === "lease" && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>Router Lease</span><span>+${formData.leaseLength === "0-6" ? "15.00" : selected.router.leasePrice.toFixed(2)}</span></div>}
+                    {formData.leaseLength === "15+" && formData.wantsContract && <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4CAF50' }}><span>Contract Discount (10% off)</span><span>-${(selected.price * 0.10).toFixed(2)}</span></div>}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: '1.125rem', fontWeight: '700' }}><span>Monthly Total</span><span style={{ color: '#C75B4B' }}>${calculateTotal().toFixed(2)}/mo</span></div>
                   </div>
                   
                   {getOneTimeTotal() > 0 && (
-                    <div className="mt-4 pt-4 border-t">
-                      <h4 className="font-semibold text-gray-700 mb-2">One-Time Charges</h4>
-                      <div className="space-y-2 text-sm">
-                        {formData.installOption === "complete" && <div className="flex justify-between"><span className="text-slate-600">Complete Installation</span><span>$49.99</span></div>}
-                        <div className="flex justify-between pt-2 border-t font-bold"><span>One-Time Total</span><span className="text-orange-600">${getOneTimeTotal().toFixed(2)}</span></div>
+                    <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                      <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '0.5rem' }}>One-Time Charges</h4>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+                        {formData.installOption === "complete" && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>Complete Installation</span><span>$49.99</span></div>}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontWeight: '700' }}><span>One-Time Total</span><span style={{ color: '#F59E0B' }}>${getOneTimeTotal().toFixed(2)}</span></div>
                       </div>
                     </div>
                   )}
                 </div>
 
                 {!orderSubmitted ? (
-                  <div className="flex gap-4">
-                    <button onClick={handleBack} disabled={isSubmitting} className="flex-1 px-6 py-4 border-2 border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-50 transition-colors disabled:opacity-50">← Back</button>
-                    <button onClick={handleSubmitOrder} disabled={isSubmitting} className={`flex-1 px-6 py-4 bg-gradient-to-r ${selected.color} text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-lg disabled:opacity-70 flex items-center justify-center gap-2`}>
+                  <div style={{ display: 'flex', gap: '1rem' }}>
+                    <button onClick={handleBack} disabled={isSubmitting} style={{ ...secondaryBtnStyle, flex: 1, opacity: isSubmitting ? 0.5 : 1 }}>← Back</button>
+                    <button onClick={handleSubmitOrder} disabled={isSubmitting} style={{ ...primaryBtnStyle, flex: 1, opacity: isSubmitting ? 0.7 : 1 }}>
                       {isSubmitting ? (
                         <>
-                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                          <svg style={{ animation: 'spin 1s linear infinite', width: '1.25rem', height: '1.25rem' }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path style={{ opacity: 0.75 }} fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                           Submitting...
                         </>
                       ) : 'Submit Order ✓'}
                     </button>
                   </div>
                 ) : (
-                  <div className="space-y-6">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     {submitResult?.success ? (
-                      <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
-                        <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '16px', padding: '1.5rem', textAlign: 'center' }}>
+                        <div style={{ width: '4rem', height: '4rem', background: '#4CAF50', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
+                          <svg style={{ width: '2rem', height: '2rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-green-800">Thank You!</h3>
-                        <p className="text-green-600 mt-2">Your internet service signup has been submitted successfully.</p>
-                        <div className="mt-4 p-3 bg-green-100 rounded-lg inline-block">
-                          <p className="text-sm text-green-700"><strong>Confirmation:</strong> {formData.tenant} - Unit {formData.unit}</p>
-                          <p className="text-sm text-green-700"><strong>Plan:</strong> {selected.name} - ${calculateTotal().toFixed(2)}/month</p>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#4CAF50' }}>Thank You!</h3>
+                        <p style={{ color: '#81C784', marginTop: '0.5rem' }}>Your internet service signup has been submitted successfully.</p>
+                        <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'rgba(76, 175, 80, 0.2)', borderRadius: '8px', display: 'inline-block' }}>
+                          <p style={{ fontSize: '0.875rem', color: '#A5D6A7' }}><strong>Confirmation:</strong> {formData.tenant} - Unit {formData.unit}</p>
+                          <p style={{ fontSize: '0.875rem', color: '#A5D6A7' }}><strong>Plan:</strong> {selected.name} - ${calculateTotal().toFixed(2)}/month</p>
                         </div>
-                        <p className="text-green-600 text-sm mt-4">You will receive a confirmation email at <strong>{formData.email}</strong></p>
+                        <p style={{ color: '#81C784', fontSize: '0.875rem', marginTop: '1rem' }}>You will receive a confirmation email at <strong>{formData.email}</strong></p>
                       </div>
                     ) : (
-                      <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-                        <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                      <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '16px', padding: '1.5rem', textAlign: 'center' }}>
+                        <div style={{ width: '4rem', height: '4rem', background: '#EF4444', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
+                          <svg style={{ width: '2rem', height: '2rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                         </div>
-                        <h3 className="text-xl font-bold text-red-800">Submission Error</h3>
-                        <p className="text-red-600 mt-2">There was a problem submitting your order. Please try again or contact support.</p>
-                        <button onClick={() => { setOrderSubmitted(false); setSubmitResult(null); }} className="mt-4 px-6 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors">Try Again</button>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#EF4444' }}>Submission Error</h3>
+                        <p style={{ color: '#FCA5A5', marginTop: '0.5rem' }}>There was a problem submitting your order. Please try again or contact support.</p>
+                        <button onClick={() => { setOrderSubmitted(false); setSubmitResult(null); }} style={{ ...primaryBtnStyle, marginTop: '1rem', background: '#EF4444' }}>Try Again</button>
                       </div>
                     )}
                     {submitResult?.success && (
                       <>
-                        <div className="bg-slate-50 rounded-xl p-4 text-center"><p className="text-slate-600 text-sm">Questions? Contact us at <strong>sales@spacesbroadband.com</strong></p></div>
-                        <button onClick={() => { setStep(1); setSelectedPlan(null); setOrderSubmitted(false); setSubmitResult(null); setFormData({ unit: "", tenant: "", email: "", phone: "", leaseLength: "7-14", specificLeaseMonths: "", routerInfo: "lease", installOption: "basic", wantsContract: false }); }} className="w-full px-6 py-4 border-2 border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-50 transition-colors">Start New Signup</button>
+                        <div style={{ background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1rem', textAlign: 'center' }}><p style={{ color: '#888888', fontSize: '0.875rem' }}>Questions? Contact us at <strong style={{ color: '#C75B4B' }}>sales@spacesbroadband.com</strong></p></div>
+                        <button onClick={() => { setStep(1); setSelectedPlan(null); setOrderSubmitted(false); setSubmitResult(null); setFormData({ unit: "", tenant: "", email: "", phone: "", leaseLength: "7-14", specificLeaseMonths: "", routerInfo: "lease", installOption: "basic", wantsContract: false }); }} style={secondaryBtnStyle}>Start New Signup</button>
                       </>
                     )}
                   </div>
@@ -474,96 +649,61 @@
         return (
           <>
           <ContractModal />
-          <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
-            <div className="max-w-2xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-10">
-                {[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }].map((s, idx) => (
-                  <div key={s.num} className="flex items-center gap-2">
-                    {idx > 0 && <div className={`w-8 h-0.5 ${s.num <= 4 ? "bg-blue-500" : "bg-slate-600"} -ml-2 mr-2`}></div>}
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${s.num <= 4 ? "bg-blue-500 text-white" : "bg-slate-600 text-slate-400"}`}>{s.num}</div>
-                    <span className="text-slate-400 text-sm hidden sm:inline">{s.label}</span>
-                  </div>
-                ))}
-              </div>
+          <div style={containerStyle}>
+            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+              <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }]} currentStep={4} />
 
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div style={cardStyle}>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '4rem', height: '4rem', background: 'rgba(76, 175, 80, 0.2)', borderRadius: '50%', marginBottom: '1rem' }}>
+                    <svg style={{ width: '2rem', height: '2rem', color: '#4CAF50' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-800">Service Contract Details</h2>
-                  <p className="text-slate-500 mt-2">Lock in your rate and save 10%</p>
+                  <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', margin: 0 }}>Service Contract Details</h2>
+                  <p style={{ color: '#888888', marginTop: '0.5rem' }}>You're saving 10% with a service contract!</p>
                 </div>
 
-                <div className="mb-8 p-5 bg-green-50 rounded-xl border border-green-200">
-                  <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    Your Savings
-                  </h4>
-                  <div className="flex items-center justify-between">
-                    <div><p className="text-green-700"><strong>10% off</strong> your {selected.name} plan service price</p><p className="text-sm text-green-600 mt-1">Save ${(selected.price * 0.10).toFixed(2)} every month</p></div>
-                    <div className="text-3xl font-bold text-green-600">-${(selected.price * 0.10).toFixed(2)}<span className="text-base font-normal">/mo</span></div>
+                <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '16px', padding: '1.5rem', marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: '600', color: '#4CAF50' }}>Your Savings</span>
+                    <span style={{ fontSize: '1.5rem', fontWeight: '700', color: '#4CAF50' }}>-${(selected.price * 0.10).toFixed(2)}/mo</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem', color: '#81C784' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Original Price:</span><span>${selected.price.toFixed(2)}/mo</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Contract Price:</span><span>${(selected.price * 0.90).toFixed(2)}/mo</span></div>
                   </div>
                 </div>
 
-                <div className="mb-8 p-5 bg-amber-50 rounded-xl border border-amber-200">
-                  <h4 className="font-semibold text-amber-800 mb-3 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    Contract Length
-                  </h4>
-                  <p className="text-sm text-amber-700 mb-4">Your contract will match your lease length, ensuring you receive the 10% discount for your entire stay. Please enter your specific lease duration below.</p>
-                  <div className="flex items-center gap-3">
-                    <label className="text-sm font-medium text-amber-800">My lease is</label>
-                    <input type="number" min="15" placeholder="e.g. 18" value={formData.specificLeaseMonths} onChange={(e) => setFormData(prev => ({ ...prev, specificLeaseMonths: e.target.value }))} className="w-24 px-3 py-2 border border-amber-300 rounded-lg text-center font-semibold text-amber-900 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent" />
-                    <span className="text-sm font-medium text-amber-800">months</span>
-                  </div>
-                  {formData.specificLeaseMonths && parseInt(formData.specificLeaseMonths) >= 15 && (
-                    <p className="text-sm text-green-700 mt-3 flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                      Your {formData.specificLeaseMonths}-month contract will save you ${((selected.price * 0.10) * parseInt(formData.specificLeaseMonths)).toFixed(2)} total
-                    </p>
-                  )}
-                  {formData.specificLeaseMonths && parseInt(formData.specificLeaseMonths) < 15 && <p className="text-sm text-red-600 mt-3">Contract requires a minimum of 15 months</p>}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <label style={labelStyle}>Contract Length (Months) *</label>
+                  <input
+                    type="number"
+                    name="specificLeaseMonths"
+                    value={formData.specificLeaseMonths}
+                    onChange={handleInputChange}
+                    style={inputStyle}
+                    placeholder="Enter your lease length in months (e.g. 15, 18, 24)"
+                    min="15"
+                  />
+                  <p style={{ fontSize: '0.8rem', color: '#888888', marginTop: '0.5rem' }}>Your contract will match your lease length. Minimum 15 months.</p>
                 </div>
 
-                <div className="mb-8 p-5 bg-slate-50 rounded-xl">
-                  <h4 className="font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    Key Contract Terms
-                  </h4>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span><span><strong>Early Termination Fee:</strong> $50 fee applies if service is cancelled before contract end date</span></li>
-                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span><span><strong>Automatic Renewal:</strong> Contract automatically renews month-to-month unless written notice is provided</span></li>
-                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span><span><strong>10% Discount:</strong> Applies exclusively to the base monthly service plan price, not to equipment lease fees, installation charges, or taxes</span></li>
-                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span><span><strong>Equipment:</strong> Customer is responsible for any damage to leased equipment beyond normal wear and tear</span></li>
-                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span><span><strong>Payment:</strong> Service may be suspended if payment is not received; payments can be made through the customer portal</span></li>
-                  </ul>
-                  <p className="mt-4 text-sm text-blue-600 italic flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                    The full Internet Service Agreement will be sent to your email for review and signature.
-                  </p>
-                </div>
-
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
-                  <div className="flex justify-between items-center">
+                <div style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                    <svg style={{ width: '1.25rem', height: '1.25rem', color: '#F59E0B', flexShrink: 0, marginTop: '0.125rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                     <div>
-                      <div className="text-sm text-green-700">Your Monthly Rate with Contract</div>
-                      <div className="text-2xl font-bold text-green-800">${calculateTotal().toFixed(2)}/mo</div>
-                      <div className="text-sm text-green-600 mt-1">Saving ${(selected.price * 0.10).toFixed(2)}/month (10% off {selected.name} plan)</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="bg-green-600 text-white px-4 py-2 rounded-lg">
-                        <div className="text-xs opacity-90">Your Discount</div>
-                        <div className="text-xl font-bold">10% OFF</div>
-                      </div>
-                      {formData.specificLeaseMonths && parseInt(formData.specificLeaseMonths) >= 15 && <div className="text-sm text-green-700 mt-2">Total savings: ${((selected.price * 0.10) * parseInt(formData.specificLeaseMonths)).toFixed(2)}</div>}
+                      <p style={{ fontWeight: '600', color: '#F59E0B', fontSize: '0.9rem' }}>Early Termination Fee</p>
+                      <p style={{ color: '#FBBF24', fontSize: '0.85rem', marginTop: '0.25rem' }}>$50.00 per remaining month if you cancel before your contract ends.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <button onClick={handleBack} className="flex-1 px-6 py-4 border-2 border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-50 transition-colors">← Back</button>
-                  <button onClick={handleContinue} className={`flex-1 px-6 py-4 bg-gradient-to-r ${selected.color} text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-lg`}>Review Order →</button>
+                <button onClick={() => setShowContractModal(true)} style={{ width: '100%', padding: '0.75rem', background: 'transparent', border: '1px solid rgba(199, 91, 75, 0.5)', borderRadius: '8px', color: '#C75B4B', fontSize: '0.9rem', cursor: 'pointer', marginBottom: '1.5rem' }}>
+                  📄 View Full Service Agreement
+                </button>
+
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
+                  <button onClick={handleContinue} style={{ ...primaryBtnStyle, flex: 1 }}>Review Order →</button>
                 </div>
               </div>
             </div>
@@ -572,110 +712,93 @@
         );
       }
 
-      // Step 3: Service Options
+      // Step 3: Options
       if (step === 3 && selected) {
-        const showContractStep = formData.leaseLength === "15+" && formData.wantsContract;
-        const stepperSteps = showContractStep 
-          ? [{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }]
-          : [{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }];
-
         return (
-          <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
-            <div className="max-w-2xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-10">
-                {stepperSteps.map((s, idx) => (
-                  <div key={s.num} className="flex items-center gap-2">
-                    {idx > 0 && <div className={`w-8 h-0.5 ${s.num <= 3 ? "bg-blue-500" : "bg-slate-600"} -ml-2 mr-2`}></div>}
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${s.num <= 3 ? "bg-blue-500 text-white" : "bg-slate-600 text-slate-400"}`}>{s.num}</div>
-                    <span className="text-slate-400 text-sm hidden sm:inline">{s.label}</span>
-                  </div>
-                ))}
-              </div>
+          <div style={containerStyle}>
+            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+              <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={3} />
 
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Service Options</h2>
-                <p className="text-slate-500 mb-6">Customize your {selected.name} plan</p>
+              <div style={cardStyle}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.5rem' }}>Customize Your Service</h2>
+                <p style={{ color: '#888888', marginBottom: '1.5rem' }}>Choose your router and installation options</p>
 
-                <div className="mb-8">
-                  <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>
-                    Router Equipment
+                {/* Router Options */}
+                <div style={{ marginBottom: '2rem' }}>
+                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <svg style={{ width: '1.25rem', height: '1.25rem', color: '#C75B4B' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>
+                    Router Option
                   </h4>
                   
                   {formData.leaseLength === "0-6" ? (
-                    <>
-                      <p className="text-sm text-gray-500 mb-4">Short-term lease options</p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {shortTermRouterOptions.map((option) => (
-                          <label key={option.value} className={`relative flex flex-col p-5 border-2 rounded-xl cursor-pointer transition-all ${formData.routerInfo === option.value ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
-                            <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} className="sr-only" />
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="font-semibold text-gray-800">{option.label}</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                      {shortTermRouterOptions.map((option) => (
+                        <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.routerInfo === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.routerInfo === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
+                          <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                            <span style={{ fontWeight: '600', color: '#FFFFFF' }}>{option.label}</span>
+                            {formData.routerInfo === option.value && (
+                              <div style={{ width: '1.25rem', height: '1.25rem', background: '#C75B4B', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg style={{ width: '0.75rem', height: '0.75rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
+                            )}
+                          </div>
+                          <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: option.price > 0 ? '#C75B4B' : '#4CAF50', fontWeight: '500' }}>{option.price > 0 ? `+$${option.price.toFixed(2)}/mo` : 'No charge'}</div>
+                          <div style={{ fontSize: '0.85rem', color: '#888888' }}>{option.description}</div>
+                        </label>
+                      ))}
+                    </div>
+                  ) : (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                      {routerOptions.map((option) => {
+                        let priceDisplay = "";
+                        let priceColor = "#888888";
+                        if (option.value === "lease") {
+                          priceDisplay = `+$${selected.router.leasePrice.toFixed(2)}/mo`;
+                          priceColor = "#C75B4B";
+                        } else {
+                          priceDisplay = "No charge";
+                          priceColor = "#4CAF50";
+                        }
+                        
+                        return (
+                          <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.routerInfo === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.routerInfo === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
+                            <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                              <span style={{ fontWeight: '600', color: '#FFFFFF' }}>{option.label}</span>
                               {formData.routerInfo === option.value && (
-                                <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center"><svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
+                                <div style={{ width: '1.25rem', height: '1.25rem', background: '#C75B4B', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg style={{ width: '0.75rem', height: '0.75rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
                               )}
                             </div>
-                            <div className={`text-sm mb-2 ${option.price > 0 ? "text-blue-600 font-medium" : "text-green-600 font-semibold"}`}>{option.price > 0 ? `+$${option.price.toFixed(2)}/mo` : "No charge"}</div>
-                            <div className="text-sm text-slate-600">{option.description}</div>
+                            <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: priceColor, fontWeight: '500' }}>{priceDisplay}</div>
+                            {option.value === "lease" && <div style={{ fontSize: '0.85rem', color: '#888888' }}>Includes free maintenance & tech support</div>}
+                            {option.value === "byod" && <div style={{ fontSize: '0.85rem', color: '#888888' }}>Use your own compatible router</div>}
                           </label>
-                        ))}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-sm text-gray-500 mb-4">For your {selected.name} plan: {selected.router.name}</p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {routerOptions.map((option) => {
-                          let priceDisplay = "";
-                          let priceClass = "text-slate-500";
-                          if (option.value === "lease") {
-                            priceDisplay = `+$${selected.router.leasePrice.toFixed(2)}/mo`;
-                            priceClass = "text-blue-600 font-medium";
-                          } else {
-                            priceDisplay = "No charge";
-                            priceClass = "text-green-600 font-semibold";
-                          }
-                          
-                          return (
-                            <label key={option.value} className={`relative flex flex-col p-5 border-2 rounded-xl cursor-pointer transition-all ${formData.routerInfo === option.value ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
-                              <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} className="sr-only" />
-                              <div className="flex items-center justify-between mb-2">
-                                <div className="font-semibold text-gray-800">{option.label}</div>
-                                {formData.routerInfo === option.value && (
-                                  <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center"><svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
-                                )}
-                              </div>
-                              <div className={`text-sm mb-2 ${priceClass}`}>{priceDisplay}</div>
-                              {option.value === "lease" && <div className="text-sm text-slate-600">Includes free maintenance & tech support</div>}
-                              {option.value === "byod" && <div className="text-sm text-slate-600">Use your own compatible router</div>}
-                            </label>
-                          );
-                        })}
-                      </div>
-                    </>
+                        );
+                      })}
+                    </div>
                   )}
                 </div>
 
-                <div className="mb-8">
-                  <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                {/* Installation Options */}
+                <div style={{ marginBottom: '2rem' }}>
+                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <svg style={{ width: '1.25rem', height: '1.25rem', color: '#C75B4B' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                     Installation Type
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     {installOptions.map((option) => (
-                      <label key={option.value} className={`relative flex flex-col p-5 border-2 rounded-xl cursor-pointer transition-all ${formData.installOption === option.value ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
-                        <input type="radio" name="installOption" value={option.value} checked={formData.installOption === option.value} onChange={handleInputChange} className="sr-only" />
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="font-semibold text-gray-800">{option.label}</div>
+                      <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.installOption === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.installOption === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
+                        <input type="radio" name="installOption" value={option.value} checked={formData.installOption === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                          <span style={{ fontWeight: '600', color: '#FFFFFF' }}>{option.label}</span>
                           {formData.installOption === option.value && (
-                            <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center"><svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
+                            <div style={{ width: '1.25rem', height: '1.25rem', background: '#C75B4B', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg style={{ width: '0.75rem', height: '0.75rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
                           )}
                         </div>
-                        <div className={`text-sm mb-2 ${option.price > 0 ? "text-blue-600 font-medium" : "text-green-600 font-semibold"}`}>{option.price > 0 ? `$${option.price.toFixed(2)} one-time` : "FREE"}</div>
-                        {option.description && <div className="text-sm text-slate-600">{option.description}</div>}
+                        <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: option.price > 0 ? '#C75B4B' : '#4CAF50', fontWeight: '500' }}>{option.price > 0 ? `$${option.price.toFixed(2)} one-time` : "FREE"}</div>
+                        {option.description && <div style={{ fontSize: '0.85rem', color: '#888888' }}>{option.description}</div>}
                         {option.bullets && (
-                          <ul className="mt-2 space-y-1">
-                            {option.bullets.map((bullet, idx) => <li key={idx} className="text-sm text-slate-600 flex items-start gap-2"><svg className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{bullet}</li>)}
+                          <ul style={{ marginTop: '0.5rem', listStyle: 'none', padding: 0 }}>
+                            {option.bullets.map((bullet, idx) => <li key={idx} style={{ fontSize: '0.8rem', color: '#888888', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.25rem' }}><svg style={{ width: '1rem', height: '1rem', color: '#4CAF50', marginTop: '0.125rem', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{bullet}</li>)}
                           </ul>
                         )}
                       </label>
@@ -683,40 +806,42 @@
                   </div>
                 </div>
 
+                {/* Contract Option for 15+ months */}
                 {formData.leaseLength === "15+" && (
-                  <div className="mb-8 p-5 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                    <label className="flex items-start gap-4 cursor-pointer">
-                      <input type="checkbox" name="wantsContract" checked={formData.wantsContract} onChange={handleInputChange} className="w-5 h-5 mt-1 rounded border-green-300 text-green-600 focus:ring-green-500" />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-green-800">Add a Service Contract</span>
-                          <span className="px-2 py-0.5 bg-green-600 text-white text-xs font-bold rounded">10% OFF</span>
+                  <div style={{ marginBottom: '2rem', padding: '1.25rem', background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05))', borderRadius: '12px', border: '1px solid rgba(76, 175, 80, 0.3)' }}>
+                    <label style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', cursor: 'pointer' }}>
+                      <input type="checkbox" name="wantsContract" checked={formData.wantsContract} onChange={handleInputChange} style={{ width: '1.25rem', height: '1.25rem', marginTop: '0.25rem', accentColor: '#4CAF50' }} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <span style={{ fontWeight: '600', color: '#4CAF50' }}>Add a Service Contract</span>
+                          <span style={{ padding: '0.125rem 0.5rem', background: '#4CAF50', color: '#FFFFFF', fontSize: '0.7rem', fontWeight: '700', borderRadius: '4px' }}>10% OFF</span>
                         </div>
-                        <p className="text-sm text-green-700 mt-1">Add a service contract to lock in your rate and get 10% off your service price. Your contract will match your lease length.</p>
+                        <p style={{ fontSize: '0.875rem', color: '#81C784', marginTop: '0.25rem' }}>Add a service contract to lock in your rate and get 10% off your service price. Your contract will match your lease length.</p>
                       </div>
                     </label>
                   </div>
                 )}
 
-                <div className="bg-slate-50 rounded-xl p-5 mb-6">
-                  <div className="flex justify-between items-center">
+                {/* Price Summary */}
+                <div style={{ background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                      <div className="text-sm text-slate-500">Monthly Total</div>
-                      <div className="text-2xl font-bold text-slate-800">${calculateTotal().toFixed(2)}<span className="text-base font-normal text-slate-500">/mo</span></div>
-                      {formData.routerInfo === "lease" && <div className="text-sm text-slate-500 mt-1">{selected.name} plan + Router lease ({formData.leaseLength === "0-6" ? "$15.00/mo" : `$${selected.router.leasePrice.toFixed(2)}/mo`})</div>}
+                      <div style={{ fontSize: '0.875rem', color: '#888888' }}>Monthly Total</div>
+                      <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF' }}>${calculateTotal().toFixed(2)}<span style={{ fontSize: '1rem', fontWeight: '400', color: '#888888' }}>/mo</span></div>
+                      {formData.routerInfo === "lease" && <div style={{ fontSize: '0.8rem', color: '#888888', marginTop: '0.25rem' }}>{selected.name} plan + Router lease ({formData.leaseLength === "0-6" ? "$15.00/mo" : `$${selected.router.leasePrice.toFixed(2)}/mo`})</div>}
                     </div>
                     {getOneTimeTotal() > 0 && (
-                      <div className="text-right">
-                        <div className="text-sm text-slate-500">One-Time</div>
-                        <div className="text-xl font-bold text-orange-600">${getOneTimeTotal().toFixed(2)}</div>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontSize: '0.875rem', color: '#888888' }}>One-Time</div>
+                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#F59E0B' }}>${getOneTimeTotal().toFixed(2)}</div>
                       </div>
                     )}
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <button onClick={handleBack} className="flex-1 px-6 py-4 border-2 border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-50 transition-colors">← Back</button>
-                  <button onClick={handleContinue} className={`flex-1 px-6 py-4 bg-gradient-to-r ${selected.color} text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-lg`}>{formData.leaseLength === "15+" && formData.wantsContract ? "Continue to Contract →" : "Review Order →"}</button>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
+                  <button onClick={handleContinue} style={{ ...primaryBtnStyle, flex: 1 }}>{formData.leaseLength === "15+" && formData.wantsContract ? "Continue to Contract →" : "Review Order →"}</button>
                 </div>
               </div>
             </div>
@@ -727,74 +852,66 @@
       // Step 2: Customer Information
       if (step === 2 && selected) {
         return (
-          <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
-            <div className="max-w-2xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-10">
-                {[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }].map((s, idx) => (
-                  <div key={s.num} className="flex items-center gap-2">
-                    {idx > 0 && <div className={`w-8 h-0.5 ${s.num <= 2 ? "bg-blue-500" : "bg-slate-600"} -ml-2 mr-2`}></div>}
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${s.num <= 2 ? "bg-blue-500 text-white" : "bg-slate-600 text-slate-400"}`}>{s.num}</div>
-                    <span className="text-slate-400 text-sm hidden sm:inline">{s.label}</span>
-                  </div>
-                ))}
-              </div>
+          <div style={containerStyle}>
+            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+              <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={2} />
 
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Customer Information</h2>
-                <p className="text-slate-500 mb-6">Tell us about yourself</p>
+              <div style={cardStyle}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.5rem' }}>Customer Information</h2>
+                <p style={{ color: '#888888', marginBottom: '1.5rem' }}>Tell us about yourself</p>
 
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Tenant Name *</label>
-                      <input type="text" name="tenant" value={formData.tenant} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Full name" />
+                      <label style={labelStyle}>Tenant Name *</label>
+                      <input type="text" name="tenant" value={formData.tenant} onChange={handleInputChange} style={inputStyle} placeholder="Full name" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Unit Number *</label>
-                      <input type="text" name="unit" value={formData.unit} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g. 1101" />
+                      <label style={labelStyle}>Unit Number *</label>
+                      <input type="text" name="unit" value={formData.unit} onChange={handleInputChange} style={inputStyle} placeholder="e.g. 1101" />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="your@email.com" />
+                      <label style={labelStyle}>Email Address *</label>
+                      <input type="email" name="email" value={formData.email} onChange={handleInputChange} style={inputStyle} placeholder="your@email.com" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="(555) 123-4567" />
+                      <label style={labelStyle}>Phone Number *</label>
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} style={inputStyle} placeholder="(555) 123-4567" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Lease Length *</label>
-                    <div className="grid grid-cols-3 gap-4">
+                    <label style={labelStyle}>Lease Length *</label>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
                       {leaseLengthOptions.map((option) => (
-                        <label key={option.value} className={`relative flex items-center justify-center p-4 border-2 rounded-xl cursor-pointer transition-all ${formData.leaseLength === option.value ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}>
-                          <input type="radio" name="leaseLength" value={option.value} checked={formData.leaseLength === option.value} onChange={handleInputChange} className="sr-only" />
-                          <span className={`font-medium ${formData.leaseLength === option.value ? "text-blue-700" : "text-gray-700"}`}>{option.label}</span>
+                        <label key={option.value} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', border: `2px solid ${formData.leaseLength === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.leaseLength === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
+                          <input type="radio" name="leaseLength" value={option.value} checked={formData.leaseLength === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                          <span style={{ fontWeight: '500', color: formData.leaseLength === option.value ? '#C75B4B' : '#CCCCCC' }}>{option.label}</span>
                         </label>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-8 bg-slate-50 rounded-xl p-5">
-                  <div className="flex items-center justify-between">
+                <div style={{ marginTop: '2rem', background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div>
-                      <div className="text-lg font-bold text-slate-800">{selected.name} Plan</div>
-                      <div className="text-slate-500">{selected.speed} Mbps</div>
+                      <div style={{ fontSize: '1.125rem', fontWeight: '700', color: '#FFFFFF' }}>{selected.name} Plan</div>
+                      <div style={{ color: '#888888' }}>{selected.speed} Mbps</div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-blue-600">${selected.price.toFixed(2)}</div>
-                      <div className="text-slate-500 text-sm">/month</div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#C75B4B' }}>${selected.price.toFixed(2)}</div>
+                      <div style={{ color: '#888888', fontSize: '0.875rem' }}>/month</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-4 mt-8">
-                  <button onClick={handleBack} className="flex-1 px-6 py-4 border-2 border-slate-300 text-slate-600 rounded-xl font-semibold hover:bg-slate-50 transition-colors">← Back</button>
-                  <button onClick={handleContinue} disabled={!isFormValid()} className={`flex-1 px-6 py-4 bg-gradient-to-r ${selected.color} text-white rounded-xl font-semibold transition-all ${isFormValid() ? "hover:opacity-90 shadow-lg" : "opacity-50 cursor-not-allowed"}`}>Continue →</button>
+                <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+                  <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
+                  <button onClick={handleContinue} disabled={!isFormValid()} style={{ ...primaryBtnStyle, flex: 1, opacity: isFormValid() ? 1 : 0.5, cursor: isFormValid() ? 'pointer' : 'not-allowed' }}>Continue →</button>
                 </div>
               </div>
             </div>
@@ -804,56 +921,88 @@
 
       // Step 1: Plan Selection
       return (
-        <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 p-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-10">
-              <h1 className="text-4xl font-bold text-white mb-3">Choose Your Plan</h1>
-              <p className="text-slate-300 text-lg">Lightning-fast fiber internet for your apartment unit</p>
+        <div style={containerStyle}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <span style={{ display: 'inline-block', color: '#C75B4B', fontFamily: 'Space Mono, monospace', fontSize: '0.85rem', letterSpacing: '2px', marginBottom: '0.5rem' }}>// AUTUMN HOLLOW</span>
+              <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#FFFFFF', marginBottom: '0.75rem', letterSpacing: '-1px' }}>Choose Your <span style={{ color: '#C75B4B' }}>Plan</span></h1>
+              <p style={{ color: '#888888', fontSize: '1.125rem' }}>Lightning-fast fiber internet for your apartment</p>
             </div>
 
-            <div className="flex items-center justify-center gap-4 mb-10">
-              {[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }].map((s, idx) => (
-                <div key={s.num} className="flex items-center gap-2">
-                  {idx > 0 && <div className={`w-8 h-0.5 ${s.num <= 1 ? "bg-blue-500" : "bg-slate-600"} -ml-2 mr-2`}></div>}
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${s.num <= 1 ? "bg-blue-500 text-white" : "bg-slate-600 text-slate-400"}`}>{s.num}</div>
-                  <span className="text-slate-400 text-sm hidden sm:inline">{s.label}</span>
-                </div>
-              ))}
-            </div>
+            <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={1} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
               {plans.map((plan) => (
-                <div key={plan.id} onClick={() => handleSelect(plan.id)} className={`relative bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ${selectedPlan === plan.id ? `ring-4 ${plan.ring} scale-105` : "hover:scale-102 hover:shadow-xl"}`}>
-                  {plan.badge && <div className={`absolute top-0 right-0 ${plan.accent} text-white px-4 py-1 text-sm font-bold rounded-bl-xl`}>{plan.badge}</div>}
-                  <div className={`bg-gradient-to-r ${plan.color} p-6 text-white`}>
-                    <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold">${plan.price.toFixed(2)}</span>
-                      <span className="text-white/80">/mo</span>
+                <div
+                  key={plan.id}
+                  onClick={() => handleSelect(plan.id)}
+                  style={{
+                    position: 'relative',
+                    background: 'rgba(26, 26, 26, 0.95)',
+                    border: `2px solid ${selectedPlan === plan.id ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`,
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    transform: selectedPlan === plan.id ? 'scale(1.02)' : 'scale(1)',
+                    boxShadow: selectedPlan === plan.id ? '0 20px 40px rgba(199, 91, 75, 0.2)' : 'none',
+                  }}
+                >
+                  {plan.badge && (
+                    <div style={{ position: 'absolute', top: 0, right: 0, background: '#C75B4B', color: '#FFFFFF', padding: '0.25rem 1rem', fontSize: '0.75rem', fontWeight: '700', borderBottomLeftRadius: '12px' }}>{plan.badge}</div>
+                  )}
+                  <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.25rem' }}>{plan.name}</h3>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem' }}>
+                      <span style={{ fontSize: '2.5rem', fontWeight: '800', color: '#C75B4B' }}>${plan.price.toFixed(2)}</span>
+                      <span style={{ color: '#888888' }}>/mo</span>
                     </div>
-                    <div className="mt-2 text-white/90">{plan.speed} Mbps</div>
+                    <div style={{ marginTop: '0.5rem', color: '#888888' }}>{plan.speed} Mbps</div>
                   </div>
-                  <div className="p-6">
-                    <ul className="space-y-3">
+                  <div style={{ padding: '1.5rem' }}>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-slate-600">
-                          <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#CCCCCC', marginBottom: '0.75rem' }}>
+                          <svg style={{ width: '1.25rem', height: '1.25rem', color: '#4CAF50', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                           {feature}
                         </li>
                       ))}
                     </ul>
-                    <div className={`mt-6 py-3 px-4 rounded-xl text-center font-semibold transition-all ${selectedPlan === plan.id ? `bg-gradient-to-r ${plan.color} text-white` : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}>{selectedPlan === plan.id ? "✓ Selected" : "Select Plan"}</div>
+                    <div style={{
+                      marginTop: '1.5rem',
+                      padding: '0.875rem',
+                      borderRadius: '12px',
+                      textAlign: 'center',
+                      fontWeight: '600',
+                      background: selectedPlan === plan.id ? '#C75B4B' : 'rgba(255,255,255,0.05)',
+                      color: selectedPlan === plan.id ? '#FFFFFF' : '#888888',
+                      transition: 'all 0.3s ease',
+                    }}>
+                      {selectedPlan === plan.id ? '✓ Selected' : 'Select Plan'}
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="flex justify-center">
-              <button onClick={handleContinue} disabled={!selectedPlan} className={`px-12 py-4 rounded-xl font-semibold text-lg transition-all ${selectedPlan ? "bg-blue-500 text-white hover:bg-blue-600 shadow-lg hover:shadow-xl" : "bg-slate-600 text-slate-400 cursor-not-allowed"}`}>{selectedPlan ? "Continue →" : "Select a Plan to Continue"}</button>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <button
+                onClick={handleContinue}
+                disabled={!selectedPlan}
+                style={{
+                  ...primaryBtnStyle,
+                  padding: '1rem 3rem',
+                  fontSize: '1.125rem',
+                  opacity: selectedPlan ? 1 : 0.5,
+                  cursor: selectedPlan ? 'pointer' : 'not-allowed',
+                }}
+              >
+                {selectedPlan ? 'Continue →' : 'Select a Plan to Continue'}
+              </button>
             </div>
 
-            <div className="mt-10 text-center">
-              <p className="text-slate-400 text-sm">All plans include unlimited data • No hidden fees • 30-day money-back guarantee</p>
+            <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+              <p style={{ color: '#888888', fontSize: '0.875rem' }}>All plans include unlimited data • No hidden fees • 30-day money-back guarantee</p>
             </div>
           </div>
         </div>
@@ -863,5 +1012,11 @@
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<PlanSelector />);
   </script>
+  <style>
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </body>
 </html>
