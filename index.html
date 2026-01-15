@@ -1,144 +1,1091 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autumn Hollow Internet Signup - Spaces Broadband</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<style>
+/* Hide header and footer */
+.shopify-section-group-header-group,
+.shopify-section-group-footer-group,
+header, footer, .header, .footer {
+  display: none !important;
+}
+
+/* Full width page */
+body {
+  background: #0A0A0A !important;
+}
+
+.main-page-content,
+.page-content,
+main#MainContent,
+.shopify-section,
+.page-width,
+.rte,
+article {
+  max-width: 100vw !important;
+  width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-left: calc(-50vw + 50%) !important;
+}
+</style>
+
+<style>
+header, .header, .shopify-section-group-header-group,
+footer, .footer, .shopify-section-group-footer-group,
+.announcement-bar, #shopify-section-header, #shopify-section-footer {
+  display: none !important;
+}
+body { background: #0A0A0A; }
+</style>
+<p><meta charset="UTF-8"> <meta content="width=device-width, initial-scale=1.0" name="viewport"></p>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-    
-    :root {
-      --coral: #C75B4B;
-      --coral-light: #E07A6B;
-      --coral-dark: #A84A3C;
-      --dark: #0A0A0A;
-      --dark-card: #1A1A1A;
-      --dark-lighter: #2A2A2A;
-      --white: #FFFFFF;
-      --gray: #888888;
-      --gray-light: #CCCCCC;
-      --success: #4CAF50;
-      --success-dark: #388E3C;
-      --warning: #F59E0B;
-    }
-    
+
     body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--dark);
-      color: var(--white);
-      min-height: 100vh;
+        background: #0A0A0A;
+        overflow-x: hidden;
     }
-    
-    /* Fiber Background */
+
+    .site-page {
+        --coral: #C75B4B;
+        --coral-light: #E07A6B;
+        --coral-glow: rgba(199, 91, 75, 0.4);
+        --dark: #0A0A0A;
+        --dark-lighter: #141414;
+        --dark-card: #1A1A1A;
+        --white: #FFFFFF;
+        --gray: #888888;
+        --gray-light: #CCCCCC;
+        --success: #4CAF50;
+        font-family: 'Outfit', sans-serif;
+        background: var(--dark);
+        color: var(--white);
+        line-height: 1.6;
+        position: relative;
+    }
+
+    /* ========== FIBER LINES BACKGROUND ========== */
     .fiber-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
     }
-    
+
     .fiber-bg svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
-    
+
     .fiber-line {
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      opacity: 0.3;
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        opacity: 0.4;
     }
-    
+
     .fiber-line.glow {
-      stroke-width: 4;
-      opacity: 0.1;
+        stroke-width: 4;
+        opacity: 0.15;
     }
-    
+
     .fiber-line.c1 { stroke: var(--coral); }
     .fiber-line.c2 { stroke: var(--coral-light); }
-    .fiber-line.c3 { stroke: rgba(199, 91, 75, 0.6); }
-    
+    .fiber-line.c3 { stroke: rgba(199, 91, 75, 0.8); }
+
     .fiber-light {
-      fill: none;
-      stroke: var(--coral-light);
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-dasharray: 50 2000;
-      opacity: 0;
+        fill: none;
+        stroke: var(--coral-light);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-dasharray: 50 2000;
+        opacity: 0;
     }
-    
+
     @keyframes fiberFlow1 {
-      0% { stroke-dashoffset: 2050; opacity: 0; }
-      5% { opacity: 0.8; }
-      95% { opacity: 0.8; }
-      100% { stroke-dashoffset: 0; opacity: 0; }
+        0% { stroke-dashoffset: 2050; opacity: 0; }
+        5% { opacity: 0.8; }
+        95% { opacity: 0.8; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
     }
-    
+
     .fiber-light.l1 { animation: fiberFlow1 12s linear infinite; }
     .fiber-light.l2 { animation: fiberFlow1 12s linear infinite 4s; }
     .fiber-light.l3 { animation: fiberFlow1 12s linear infinite 8s; }
-  </style>
-</head>
-<body>
-  <!-- Fiber Background -->
-  <div class="fiber-bg">
-    <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-      <path class="fiber-line glow c1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"/>
-      <path class="fiber-line c1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"/>
-      <path class="fiber-line glow c2" d="M-100,950 Q350,900 550,750 T950,550 T1350,400 T1750,250 T2100,100"/>
-      <path class="fiber-line c2" d="M-100,950 Q350,900 550,750 T950,550 T1350,400 T1750,250 T2100,100"/>
-      <path class="fiber-line glow c3" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"/>
-      <path class="fiber-line c3" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"/>
-      <path class="fiber-light l1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"/>
-      <path class="fiber-light l2" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"/>
-      <path class="fiber-light l3" d="M-100,800 Q500,750 700,600 T1100,400 T1500,250 T1900,100 T2100,-50"/>
-    </svg>
-  </div>
-  
-  <div id="root"></div>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="text/babel">
-    // Styles object for the new theme
-    const styles = {
-      // Colors
-      coral: '#C75B4B',
-      coralLight: '#E07A6B',
-      coralDark: '#A84A3C',
-      dark: '#0A0A0A',
-      darkCard: '#1A1A1A',
-      darkLighter: '#2A2A2A',
-      white: '#FFFFFF',
-      gray: '#888888',
-      grayLight: '#CCCCCC',
-      success: '#4CAF50',
-      successDark: '#388E3C',
-      warning: '#F59E0B',
-    };
 
-    function PlanSelector() {
-      const [selectedPlan, setSelectedPlan] = React.useState(null);
-      const [step, setStep] = React.useState(1);
-      const [showContractModal, setShowContractModal] = React.useState(false);
-      const [orderSubmitted, setOrderSubmitted] = React.useState(false);
-      const [isSubmitting, setIsSubmitting] = React.useState(false);
-      const [submitResult, setSubmitResult] = React.useState(null);
-      
-      const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfLxYQBoGpkCEwEE_1w-6EG8DWeZJpCKD3Q4m9r8q_Kc76-Bw/formResponse';
-      const FORM_FIELDS = {
+    .sparkles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        box-shadow: 0 0 6px 2px white, 0 0 12px 4px var(--coral-light);
+    }
+
+    @keyframes sparkle {
+        0%, 100% { opacity: 0; transform: scale(0); }
+        40% { opacity: 1; transform: scale(1.2); }
+        50% { opacity: 1; transform: scale(1); }
+        60% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .sparkle:nth-child(1) { top: 20%; left: 15%; animation: sparkle 3s ease-in-out infinite 0s; }
+    .sparkle:nth-child(2) { top: 35%; left: 45%; animation: sparkle 2.5s ease-in-out infinite 0.5s; }
+    .sparkle:nth-child(3) { top: 55%; left: 25%; animation: sparkle 3.2s ease-in-out infinite 1s; }
+    .sparkle:nth-child(4) { top: 70%; left: 60%; animation: sparkle 2.8s ease-in-out infinite 1.5s; }
+    .sparkle:nth-child(5) { top: 25%; left: 75%; animation: sparkle 3s ease-in-out infinite 2s; }
+    .sparkle:nth-child(6) { top: 45%; left: 85%; animation: sparkle 2.6s ease-in-out infinite 0.3s; }
+
+    /* ========== NAVIGATION ========== */
+    .site-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.8));
+        backdrop-filter: blur(10px);
+    }
+
+    .site-nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+    }
+
+    .site-nav-logo-text {
+        font-family: 'Space Mono', monospace;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--white);
+    }
+
+    .site-nav-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gray-light);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .site-nav-back:hover {
+        color: var(--coral);
+    }
+
+    .site-nav-back svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .site-hero {
+        position: relative;
+        z-index: 2;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 8rem 2rem 4rem;
+    }
+
+    .site-hero-content {
+        max-width: 800px;
+    }
+
+    .site-hero-tag {
+        display: inline-block;
+        color: var(--coral);
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .site-hero h1 {
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -2px;
+    }
+
+    .site-hero h1 span {
+        color: var(--coral);
+    }
+
+    .site-hero-description {
+        font-size: 1.25rem;
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* ========== PLANS SECTION ========== */
+    .site-plans {
+        position: relative;
+        z-index: 2;
+        padding: 6rem 4rem;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-tag {
+        display: inline-block;
+        color: var(--coral);
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+    }
+
+    .section-subtitle {
+        color: var(--gray);
+        margin-top: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .plan-card {
+        background: rgba(26, 26, 26, 0.95);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 20px;
+        padding: 2rem;
+        position: relative;
+        transition: all 0.4s ease;
+    }
+
+    .plan-card:hover {
+        border-color: rgba(199, 91, 75, 0.3);
+        transform: translateY(-5px);
+    }
+
+    .plan-card.featured {
+        border-color: var(--coral);
+        background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(199, 91, 75, 0.1));
+    }
+
+    .plan-card.featured::before {
+        content: 'POPULAR';
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--coral);
+        color: var(--white);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+    }
+
+    .plan-card.best-value {
+        border-color: #F59E0B;
+        background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(245, 158, 11, 0.1));
+    }
+
+    .plan-card.best-value::before {
+        content: 'BEST VALUE';
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #F59E0B;
+        color: var(--dark);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+    }
+
+    .plan-card.best-value:hover {
+        border-color: #F59E0B;
+    }
+
+    .plan-card.best-value .plan-cta {
+        background: transparent;
+        border: 2px solid #F59E0B;
+        color: #F59E0B;
+    }
+
+    .plan-card.best-value .plan-cta:hover {
+        background: #F59E0B;
+        color: var(--dark);
+    }
+
+    .plans-note {
+        text-align: center;
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-top: 3rem;
+    }
+
+    .plan-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+
+    .plan-speed {
+        color: var(--coral);
+        font-family: 'Space Mono', monospace;
+        font-size: 0.85rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .plan-price {
+        display: flex;
+        align-items: baseline;
+        gap: 0.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .plan-price-currency {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--gray);
+    }
+
+    .plan-price-amount {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .plan-price-period {
+        font-size: 1rem;
+        color: var(--gray);
+    }
+
+    .plan-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .plan-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 0;
+        color: var(--gray-light);
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .plan-features li:last-child {
+        border-bottom: none;
+    }
+
+    .plan-features li svg {
+        width: 18px;
+        height: 18px;
+        color: var(--success);
+        flex-shrink: 0;
+    }
+
+    .plan-cta {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .plan-card:not(.featured):not(.best-value) .plan-cta {
+        background: transparent;
+        border: 2px solid var(--coral);
+        color: var(--coral);
+    }
+
+    .plan-card:not(.featured):not(.best-value) .plan-cta:hover {
+        background: var(--coral);
+        color: var(--white);
+    }
+
+    .plan-card.featured .plan-cta {
+        background: var(--coral);
+        color: var(--white);
+    }
+
+    .plan-card.featured .plan-cta:hover {
+        background: var(--coral-light);
+    }
+
+    /* ========== FEATURES SECTION ========== */
+    .site-features {
+        position: relative;
+        z-index: 2;
+        padding: 6rem 4rem;
+        background: rgba(20, 20, 20, 0.8);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature-item {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .feature-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(199, 91, 75, 0.1);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+    }
+
+    .feature-icon svg {
+        width: 32px;
+        height: 32px;
+        stroke: var(--coral);
+    }
+
+    .feature-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+
+    .feature-description {
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
+
+    /* ========== HOW IT WORKS SECTION ========== */
+    .site-process {
+        position: relative;
+        z-index: 2;
+        padding: 6rem 4rem;
+    }
+
+    .process-steps {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .process-step {
+        flex: 1;
+        min-width: 250px;
+        max-width: 300px;
+        text-align: center;
+        position: relative;
+    }
+
+    .process-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 40px;
+        right: -1rem;
+        width: 2rem;
+        height: 2px;
+        background: linear-gradient(to right, var(--coral), transparent);
+    }
+
+    .step-number {
+        width: 80px;
+        height: 80px;
+        background: rgba(199, 91, 75, 0.1);
+        border: 2px solid var(--coral);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--coral);
+    }
+
+    .step-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+
+    .step-description {
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
+
+    /* ========== FAQ SECTION ========== */
+    .site-faq {
+        position: relative;
+        z-index: 2;
+        padding: 6rem 4rem;
+        background: rgba(20, 20, 20, 0.8);
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        background: rgba(26, 26, 26, 0.95);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .faq-question {
+        width: 100%;
+        padding: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+        color: var(--coral);
+    }
+
+    .faq-question svg {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question svg {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 500px;
+    }
+
+    .faq-answer-content {
+        padding: 0 1.5rem 1.5rem;
+        color: var(--gray-light);
+        line-height: 1.7;
+    }
+
+    /* ========== FOOTER ========== */
+    .site-footer {
+        position: relative;
+        z-index: 2;
+        padding: 3rem 4rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        text-align: center;
+    }
+
+    .footer-text {
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
+
+    .footer-text a {
+        color: var(--gray-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-text a:hover {
+        color: var(--coral);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+        .site-nav {
+            padding: 1rem 2rem;
+        }
+
+        .site-plans,
+        .site-features,
+        .site-process,
+        .site-faq {
+            padding: 4rem 2rem;
+        }
+
+        .process-step:not(:last-child)::after {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .site-hero {
+            min-height: 50vh;
+            padding: 6rem 1.5rem 3rem;
+        }
+
+        .site-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .plans-grid {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+        }
+    }
+
+    /* ========== SIGNUP MODAL STYLES ========== */
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .signup-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        overflow-y: auto;
+    }
+    
+    .signup-modal-container {
+        width: 100%;
+        max-width: 640px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+    }
+    
+    .signup-modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: #FFFFFF;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+    
+    .signup-modal-close:hover {
+        background: rgba(199, 91, 75, 0.5);
+    }
+    </style>
+<div class="site-page">
+<!-- Fiber Lines Background -->
+<div class="fiber-bg">
+<svg viewbox="0 0 1920 1080" preserveaspectratio="xMidYMid slice">
+            <path class="fiber-line glow c1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"></path>
+            <path class="fiber-line c1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"></path>
+            <path class="fiber-line glow c2" d="M-100,950 Q350,900 550,750 T950,550 T1350,400 T1750,250 T2100,100"></path>
+            <path class="fiber-line c2" d="M-100,950 Q350,900 550,750 T950,550 T1350,400 T1750,250 T2100,100"></path>
+            <path class="fiber-line glow c3" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"></path>
+            <path class="fiber-line c3" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"></path>
+            <path class="fiber-line glow c1" d="M-100,1050 Q250,1000 450,850 T850,650 T1250,500 T1650,350 T2100,200"></path>
+            <path class="fiber-line c1" d="M-100,1050 Q250,1000 450,850 T850,650 T1250,500 T1650,350 T2100,200"></path>
+            <path class="fiber-line glow c2" d="M-100,800 Q500,750 700,600 T1100,400 T1500,250 T1900,100 T2100,-50"></path>
+            <path class="fiber-line c2" d="M-100,800 Q500,750 700,600 T1100,400 T1500,250 T1900,100 T2100,-50"></path>
+            <path class="fiber-light l1" d="M-100,900 Q400,850 600,700 T1000,500 T1400,350 T1800,200 T2100,50"></path>
+            <path class="fiber-light l2" d="M-100,1000 Q300,950 500,800 T900,600 T1300,450 T1700,300 T2100,150"></path>
+            <path class="fiber-light l3" d="M-100,800 Q500,750 700,600 T1100,400 T1500,250 T1900,100 T2100,-50"></path>
+        </svg>
+<div class="sparkles">
+<div class="sparkle"><br></div>
+<div class="sparkle"><br></div>
+<div class="sparkle"><br></div>
+<div class="sparkle"><br></div>
+<div class="sparkle"><br></div>
+<div class="sparkle"><br></div>
+</div>
+</div>
+<!-- Navigation --><nav class="site-nav"><a href="/" class="site-nav-logo"><span class="site-nav-logo-text">SPACES BROADBAND</span> </a> <a href="/" class="site-nav-back"> <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+            </svg> Back to Home </a></nav><!-- Hero Section -->
+<section class="site-hero">
+<div class="site-hero-content">
+<span class="site-hero-tag">// AUTUMN HOLLOW APARTMENTS</span>
+<h1>High-Speed Internet for <span>Autumn Hollow</span>
+</h1>
+<p class="site-hero-description">Blazing-fast fiber internet designed specifically for Autumn Hollow residents. No hidden fees, optional contracts, just reliable connectivity.</p>
+</div>
+</section>
+<!-- Plans Section -->
+<section class="site-plans" id="plans">
+<div class="section-header">
+<span class="section-tag">// CHOOSE YOUR PLAN</span>
+<h2 class="section-title">Internet Plans</h2>
+<p class="section-subtitle">Simple, transparent pricing with no hidden fees</p>
+</div>
+<div class="plans-grid">
+<!-- Copper Plan -->
+<div class="plan-card">
+<h3 class="plan-name">Copper</h3>
+<p class="plan-speed">50 Mbps</p>
+<div class="plan-price">
+<span class="plan-price-currency">$</span> <span class="plan-price-amount">49</span> <span class="plan-price-period">.99/mo</span>
+</div>
+<ul class="plan-features">
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 50 Mbps Download</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 50 Mbps Upload</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Unlimited Data</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> VIP Support</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Professional Install</li>
+</ul>
+<a href="javascript:void(0)" onclick="openSignupModal('copper')" class="plan-cta">Select Plan</a>
+</div>
+<!-- Bronze Plan -->
+<div class="plan-card">
+<h3 class="plan-name">Bronze</h3>
+<p class="plan-speed">100 Mbps</p>
+<div class="plan-price">
+<span class="plan-price-currency">$</span> <span class="plan-price-amount">69</span> <span class="plan-price-period">.99/mo</span>
+</div>
+<ul class="plan-features">
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 100 Mbps Download</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 100 Mbps Upload</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Unlimited Data</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> VIP Support</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Professional Install</li>
+</ul>
+<a href="javascript:void(0)" onclick="openSignupModal('bronze')" class="plan-cta">Select Plan</a>
+</div>
+<!-- Silver Plan (Popular) -->
+<div class="plan-card featured">
+<h3 class="plan-name">Silver</h3>
+<p class="plan-speed">300 Mbps</p>
+<div class="plan-price">
+<span class="plan-price-currency">$</span> <span class="plan-price-amount">79</span> <span class="plan-price-period">.99/mo</span>
+</div>
+<ul class="plan-features">
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 300 Mbps Download</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 300 Mbps Upload</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Unlimited Data</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> VIP Support</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Professional Install</li>
+</ul>
+<a href="javascript:void(0)" onclick="openSignupModal('silver')" class="plan-cta">Select Plan</a>
+</div>
+<!-- Gold Plan (Best Value) -->
+<div class="plan-card best-value">
+<h3 class="plan-name">Gold</h3>
+<p class="plan-speed">1 Gbps</p>
+<div class="plan-price">
+<span class="plan-price-currency">$</span> <span class="plan-price-amount">89</span> <span class="plan-price-period">.99/mo</span>
+</div>
+<ul class="plan-features">
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 1 Gbps Download</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 1 Gbps Upload</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Unlimited Data</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> VIP Support</li>
+<li>
+<svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Professional Install</li>
+</ul>
+<a href="javascript:void(0)" onclick="openSignupModal('gold')" class="plan-cta">Select Plan</a>
+</div>
+</div>
+<p class="plans-note">All plans include unlimited data • No hidden fees • 30-day money-back guarantee</p>
+</section>
+<!-- Features Section -->
+<section class="site-features">
+<div class="section-header">
+<span class="section-tag">// WHAT'S INCLUDED</span>
+<h2 class="section-title">Every Plan Includes</h2>
+</div>
+<div class="features-grid">
+<div class="feature-item">
+<div class="feature-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg></div>
+<h3 class="feature-title">Unlimited Data</h3>
+<p class="feature-description">No data caps or throttling. Stream, game, and work without limits.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg></div>
+<h3 class="feature-title">VIP Support</h3>
+<p class="feature-description">Real humans ready to help whenever you need it.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg></div>
+<h3 class="feature-title">Professional Install</h3>
+<p class="feature-description">Your router will be set up and ready to go before you move in.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg></div>
+<h3 class="feature-title">Optional Contracts</h3>
+<p class="feature-description">Go month-to-month or lock in a lower rate with a 15+ month lease contract.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path>
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    </svg></div>
+<h3 class="feature-title">Router Lease Available</h3>
+<p class="feature-description">Lease a router for just $5.99/mo or bring your own device.</p>
+</div>
+<div class="feature-item">
+<div class="feature-icon"><svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"></path>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="M4.93 4.93l1.41 1.41"></path>
+                        <path d="M17.66 17.66l1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="M6.34 17.66l-1.41 1.41"></path>
+                        <path d="M19.07 4.93l-1.41 1.41"></path>
+                    </svg></div>
+<h3 class="feature-title">30-Day Guarantee</h3>
+<p class="feature-description">Not satisfied? Get your money back within 30 days, no questions asked.</p>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="site-process">
+<div class="section-header">
+<span class="section-tag">// GET STARTED</span>
+<h2 class="section-title">How It Works</h2>
+</div>
+<div class="process-steps">
+<div class="process-step">
+<div class="step-number">1</div>
+<h3 class="step-title">Choose Your Plan</h3>
+<p class="step-description">Select the speed tier that fits your needs and budget.</p>
+</div>
+<div class="process-step">
+<div class="step-number">2</div>
+<h3 class="step-title">Submit Your Info</h3>
+<p class="step-description">Fill out the quick signup form with your unit details.</p>
+</div>
+<div class="process-step">
+<div class="step-number">3</div>
+<h3 class="step-title">Get Connected</h3>
+<p class="step-description">Your service will be activated and ready when you move in.</p>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="site-faq">
+<div class="section-header">
+<span class="section-tag">// QUESTIONS?</span>
+<h2 class="section-title">Frequently Asked Questions</h2>
+</div>
+<div class="faq-container">
+<div class="faq-item">
+<button class="faq-question">Do I need to sign a contract? <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M6 9l6 6 6-6"></path>
+</svg></button>
+<div class="faq-answer">
+<div class="faq-answer-content">No contract is required! You can go month-to-month with no commitment. However, if you have a lease of 15+ months, you can optionally sign a service contract to receive a 10% discount on your monthly service price.</div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question">What equipment do I need? <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M6 9l6 6 6-6"></path>
+</svg></button>
+<div class="faq-answer">
+<div class="faq-answer-content">You can lease a router from us for $5.99/month, or bring your own compatible router. Our fiber connection terminates at a wall outlet in your unit—just plug in and go.</div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question">How fast will my connection actually be? <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M6 9l6 6 6-6"></path>
+</svg></button>
+<div class="faq-answer">
+<div class="faq-answer-content">Our fiber network delivers symmetrical speeds, meaning your upload and download speeds are the same. The speeds listed are the maximum for each plan, and most users experience these speeds consistently.</div>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-question">What if I move out? <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M6 9l6 6 6-6"></path>
+</svg></button>
+<div class="faq-answer">
+<div class="faq-answer-content">If you're on month-to-month service, simply let us know when you're moving and we'll cancel your service with no fees or hassles. If you have a contract, an early termination fee will apply. Please note that we cannot transfer service to another property—we can only provide service at properties listed on our website.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer --><footer class="site-footer">
+<p class="footer-text">© 2026 Spaces Broadband. <a href="/pages/contact">Contact Us</a> | <a href="/pages/troubleshoot">Troubleshoot</a></p>
+</footer>
+</div>
+
+<!-- Signup Modal Container -->
+<div id="signup-modal-root"></div>
+
+<!-- React and Babel for the signup modal -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+// Global function to open the signup modal
+window.openSignupModal = function(planId) {
+    window.selectedPlanId = planId;
+    window.renderSignupModal();
+};
+
+window.closeSignupModal = function() {
+    const root = ReactDOM.createRoot(document.getElementById('signup-modal-root'));
+    root.render(null);
+    document.body.style.overflow = '';
+};
+
+window.renderSignupModal = function() {
+    document.body.style.overflow = 'hidden';
+    const root = ReactDOM.createRoot(document.getElementById('signup-modal-root'));
+    root.render(<SignupModal initialPlan={window.selectedPlanId} onClose={window.closeSignupModal} />);
+};
+
+function SignupModal({ initialPlan, onClose }) {
+    const [step, setStep] = React.useState(2);
+    const [orderSubmitted, setOrderSubmitted] = React.useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [submitResult, setSubmitResult] = React.useState(null);
+    
+    const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfLxYQBoGpkCEwEE_1w-6EG8DWeZJpCKD3Q4m9r8q_Kc76-Bw/formResponse';
+    const FORM_FIELDS = {
         status: 'entry.388001849',
         unit: 'entry.1936953418',
         tenant: 'entry.150014828',
@@ -150,9 +1097,9 @@
         tier: 'entry.1631430552',
         contract: 'entry.586131643',
         notes: 'entry.1590347337'
-      };
-      
-      const [formData, setFormData] = React.useState({
+    };
+    
+    const [formData, setFormData] = React.useState({
         unit: "",
         tenant: "",
         email: "",
@@ -162,146 +1109,92 @@
         routerInfo: "lease",
         installOption: "basic",
         wantsContract: false,
-      });
+    });
 
-      const plans = [
-        {
-          id: "copper",
-          name: "Copper",
-          speed: "50",
-          price: 49.99,
-          features: ["50 Mbps Download", "50 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
-          badge: null,
-          router: { name: "Basic Wi-Fi Router", leasePrice: 5.99 },
-        },
-        {
-          id: "bronze",
-          name: "Bronze",
-          speed: "100",
-          price: 69.99,
-          features: ["100 Mbps Download", "100 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
-          badge: null,
-          router: { name: "Standard Wi-Fi Router", leasePrice: 5.99 },
-        },
-        {
-          id: "silver",
-          name: "Silver",
-          speed: "300",
-          price: 79.99,
-          features: ["300 Mbps Download", "300 Mbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
-          badge: "Popular",
-          router: { name: "Premium Wi-Fi 6 Router", leasePrice: 5.99 },
-        },
-        {
-          id: "gold",
-          name: "Gold",
-          speed: "1000",
-          price: 89.99,
-          features: ["1 Gbps Download", "1 Gbps Upload", "Unlimited Data", "24/7 VIP Support", "Professional Install"],
-          badge: "Best Value",
-          router: { name: "Wi-Fi 6E Mesh System", leasePrice: 5.99 },
-        },
-      ];
+    const plans = [
+        { id: "copper", name: "Copper", speed: "50", price: 49.99, features: ["50 Mbps Download", "50 Mbps Upload", "Unlimited Data", "VIP Support", "Professional Install"], router: { name: "Basic Wi-Fi Router", leasePrice: 5.99 } },
+        { id: "bronze", name: "Bronze", speed: "100", price: 69.99, features: ["100 Mbps Download", "100 Mbps Upload", "Unlimited Data", "VIP Support", "Professional Install"], router: { name: "Standard Wi-Fi Router", leasePrice: 5.99 } },
+        { id: "silver", name: "Silver", speed: "300", price: 79.99, features: ["300 Mbps Download", "300 Mbps Upload", "Unlimited Data", "VIP Support", "Professional Install"], router: { name: "Premium Wi-Fi 6 Router", leasePrice: 5.99 } },
+        { id: "gold", name: "Gold", speed: "1000", price: 89.99, features: ["1 Gbps Download", "1 Gbps Upload", "Unlimited Data", "VIP Support", "Professional Install"], router: { name: "Wi-Fi 6E Mesh System", leasePrice: 5.99 } },
+    ];
 
-      const routerOptions = [
-        { value: "lease", label: "Lease Router", type: "monthly" },
-        { value: "byod", label: "Bring Your Own Device", type: "none" },
-      ];
-
-      const leaseLengthOptions = [
+    const leaseLengthOptions = [
         { value: "0-6", label: "0-6 Months" },
         { value: "7-14", label: "7-14 Months" },
         { value: "15+", label: "15+ Months" },
-      ];
+    ];
 
-      const installOptions = [
-        { value: "basic", label: "Basic Install", description: "Router set up and ready to go before you move in", price: 0 },
-        { value: "complete", label: "Complete Install", bullets: ["Hardwire your devices (gaming consoles, smart TVs, etc.)", "Connect all wireless devices", "Personalize your network name & password", "Enable 2.4GHz for smart home devices"], price: 49.99 },
-      ];
+    const installOptions = [
+        { value: "basic", label: "Basic Install", description: "Router set up and ready to go before you move in", bullets: null, price: 0 },
+        { value: "complete", label: "Complete Install", description: null, bullets: ["Hardwire your devices (gaming, consoles, smart TVs, etc.)", "Connect all wireless devices", "Personalize your network name & password", "Enable 2.4GHz for smart home devices"], price: 49.99 },
+    ];
 
-      const shortTermRouterOptions = [
-        { value: "byod", label: "Bring Your Own Router", price: 0, description: "Use your own compatible equipment" },
-        { value: "lease", label: "Rent a Router", price: 15, description: "Includes free service calls & tech support" },
-      ];
+    const routerOptions = [
+        { value: "lease", label: "Lease Router", description: null },
+        { value: "byod", label: "Bring Your Own Device", description: "Use your own compatible router" },
+    ];
 
-      const selected = plans.find((p) => p.id === selectedPlan);
+    const selected = plans.find((p) => p.id === initialPlan);
 
-      const handleSelect = (planId) => setSelectedPlan(planId);
-
-      const handleContinue = () => {
-        if (selectedPlan && step === 1) setStep(2);
-        else if (step === 2) {
-          if (isFormValid()) setStep(3);
+    const handleContinue = () => {
+        if (step === 2) {
+            if (isFormValid()) setStep(3);
         } else if (step === 3) {
-          if (formData.leaseLength === "15+" && formData.wantsContract) setStep(4);
-          else setStep(5);
+            if (formData.leaseLength === "15+" && formData.wantsContract) setStep(4);
+            else setStep(5);
         } else if (step === 4) setStep(5);
-      };
+    };
 
-      const handleBack = () => {
+    const handleBack = () => {
         if (step === 5) {
-          if (formData.leaseLength === "15+" && formData.wantsContract) setStep(4);
-          else setStep(3);
-        } else if (step > 1) setStep(step - 1);
-      };
+            if (formData.leaseLength === "15+" && formData.wantsContract) setStep(4);
+            else setStep(3);
+        } else if (step === 2) {
+            onClose();
+        } else if (step > 2) setStep(step - 1);
+    };
 
-      const handleInputChange = (e) => {
+    const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
-        setFormData((prev) => ({
-          ...prev,
-          [name]: type === "checkbox" ? checked : value,
-        }));
-      };
+        setFormData((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    };
 
-      const isFormValid = () => formData.unit && formData.tenant && formData.email && formData.phone && formData.leaseLength;
+    const isFormValid = () => formData.unit && formData.tenant && formData.email && formData.phone && formData.leaseLength;
 
-      const calculateTotal = () => {
+    const calculateTotal = () => {
         if (!selected) return 0;
         let total = selected.price;
-        if (formData.leaseLength === "0-6") {
-          if (formData.routerInfo === "lease") total += 15;
-        } else {
-          if (formData.routerInfo === "lease") total += selected.router.leasePrice;
-        }
+        if (formData.routerInfo === "lease") total += 5.99;
         if (formData.leaseLength === "15+" && formData.wantsContract) total -= selected.price * 0.10;
         return Math.max(0, total);
-      };
+    };
 
-      const getOneTimeTotal = () => {
+    const getOneTimeTotal = () => {
         if (!selected) return 0;
         let total = 0;
         if (formData.installOption === "complete") total += 49.99;
         return total;
-      };
+    };
 
-      const getBuildingNumber = () => {
-        if (!formData.unit) return null;
-        const firstDigit = formData.unit.toString().charAt(0);
-        if (['1', '2', '3', '4', '5'].includes(firstDigit)) return parseInt(firstDigit);
-        return null;
-      };
-
-      const getRouterInfoForExcel = () => {
+    const getRouterInfoForExcel = () => {
         switch (formData.routerInfo) {
-          case 'lease': return 'Lease';
-          case 'byod': return 'Using Own';
-          default: return '';
+            case 'lease': return 'Lease';
+            case 'byod': return 'Using Own';
+            default: return '';
         }
-      };
+    };
 
-      const getLeaseForExcel = () => {
+    const getLeaseForExcel = () => {
         if (formData.leaseLength === "15+" && formData.specificLeaseMonths) return formData.specificLeaseMonths;
         switch (formData.leaseLength) {
-          case '0-6': return '6';
-          case '7-14': return '12';
-          case '15+': return '15+';
-          default: return '';
+            case '0-6': return '6';
+            case '7-14': return '12';
+            case '15+': return '15+';
+            default: return '';
         }
-      };
+    };
 
-      const getTierForExcel = () => '2';
-
-      const handleSubmitOrder = () => {
+    const handleSubmitOrder = () => {
         setIsSubmitting(true);
         setSubmitResult(null);
         
@@ -329,694 +1222,394 @@
         form.target = 'hidden_iframe';
         
         params.forEach((value, key) => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = value;
-          form.appendChild(input);
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            form.appendChild(input);
         });
         
         document.body.appendChild(form);
         form.submit();
         
         setTimeout(() => {
-          document.body.removeChild(form);
-          document.body.removeChild(iframe);
-          setSubmitResult({ success: true, building: getBuildingNumber(), message: 'Signup submitted successfully' });
-          setOrderSubmitted(true);
-          setIsSubmitting(false);
+            document.body.removeChild(form);
+            document.body.removeChild(iframe);
+            setSubmitResult({ success: true, message: 'Signup submitted successfully' });
+            setOrderSubmitted(true);
+            setIsSubmitting(false);
         }, 1500);
-      };
+    };
 
-      // Styled Components
-      const containerStyle = {
-        minHeight: '100vh',
-        padding: '2rem 1.5rem',
-        position: 'relative',
-        zIndex: 2,
-      };
+    // Styles
+    const cardStyle = { background: 'rgba(26, 26, 26, 0.98)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '2rem', backdropFilter: 'blur(10px)' };
+    const inputStyle = { width: '100%', padding: '0.875rem 1rem', background: 'rgba(42, 42, 42, 0.8)', border: '2px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#FFFFFF', fontSize: '1rem', fontFamily: 'Outfit, sans-serif', outline: 'none', boxSizing: 'border-box' };
+    const labelStyle = { display: 'block', fontSize: '0.9rem', fontWeight: '500', color: '#CCCCCC', marginBottom: '0.5rem' };
+    const primaryBtnStyle = { background: '#C75B4B', color: '#FFFFFF', padding: '1rem 2rem', borderRadius: '12px', border: 'none', fontSize: '1rem', fontWeight: '600', fontFamily: 'Outfit, sans-serif', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' };
+    const secondaryBtnStyle = { background: 'transparent', color: '#CCCCCC', padding: '1rem 2rem', borderRadius: '12px', border: '2px solid rgba(255,255,255,0.2)', fontSize: '1rem', fontWeight: '600', fontFamily: 'Outfit, sans-serif', cursor: 'pointer' };
 
-      const cardStyle = {
-        background: 'rgba(26, 26, 26, 0.95)',
-        border: '1px solid rgba(255,255,255,0.1)',
-        borderRadius: '20px',
-        padding: '2rem',
-        backdropFilter: 'blur(10px)',
-      };
-
-      const inputStyle = {
-        width: '100%',
-        padding: '0.875rem 1rem',
-        background: 'rgba(42, 42, 42, 0.8)',
-        border: '2px solid rgba(255,255,255,0.1)',
-        borderRadius: '12px',
-        color: '#FFFFFF',
-        fontSize: '1rem',
-        fontFamily: 'Outfit, sans-serif',
-        outline: 'none',
-        transition: 'all 0.3s ease',
-      };
-
-      const labelStyle = {
-        display: 'block',
-        fontSize: '0.9rem',
-        fontWeight: '500',
-        color: '#CCCCCC',
-        marginBottom: '0.5rem',
-      };
-
-      const primaryBtnStyle = {
-        background: '#C75B4B',
-        color: '#FFFFFF',
-        padding: '1rem 2rem',
-        borderRadius: '12px',
-        border: 'none',
-        fontSize: '1rem',
-        fontWeight: '600',
-        fontFamily: 'Outfit, sans-serif',
-        cursor: 'pointer',
-        transition: 'all 0.3s ease',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.5rem',
-      };
-
-      const secondaryBtnStyle = {
-        background: 'transparent',
-        color: '#CCCCCC',
-        padding: '1rem 2rem',
-        borderRadius: '12px',
-        border: '2px solid rgba(255,255,255,0.2)',
-        fontSize: '1rem',
-        fontWeight: '600',
-        fontFamily: 'Outfit, sans-serif',
-        cursor: 'pointer',
-        transition: 'all 0.3s ease',
-      };
-
-      // Step Indicator Component
-      const StepIndicator = ({ steps, currentStep }) => (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-          {steps.map((s, idx) => (
-            <div key={s.num} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              {idx > 0 && <div style={{ width: '2rem', height: '2px', background: s.num <= currentStep ? '#C75B4B' : 'rgba(255,255,255,0.2)', marginLeft: '-0.25rem', marginRight: '0.25rem' }}></div>}
-              <div style={{
-                width: '2rem',
-                height: '2rem',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: '600',
-                fontSize: '0.875rem',
-                background: s.num <= currentStep ? '#C75B4B' : 'rgba(255,255,255,0.1)',
-                color: s.num <= currentStep ? '#FFFFFF' : '#888888',
-              }}>{s.num}</div>
-              <span style={{ color: '#888888', fontSize: '0.875rem', display: 'none' }}>{s.label}</span>
-            </div>
-          ))}
+    // Step Indicator
+    const StepIndicator = ({ steps, currentStep }) => (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+            {steps.map((s, idx) => (
+                <div key={s.num} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    {idx > 0 && <div style={{ width: '2rem', height: '2px', background: s.num <= currentStep ? '#C75B4B' : 'rgba(255,255,255,0.2)' }}></div>}
+                    <div style={{ width: '2rem', height: '2rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600', fontSize: '0.875rem', background: s.num <= currentStep ? '#C75B4B' : 'rgba(255,255,255,0.1)', color: s.num <= currentStep ? '#FFFFFF' : '#888888' }}>{s.num}</div>
+                </div>
+            ))}
         </div>
-      );
+    );
 
-      // Contract Modal Component
-      const ContractModal = () => {
-        if (!showContractModal) return null;
-        
-        return (
-          <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }} onClick={() => setShowContractModal(false)}>
-            <div style={{ background: '#1A1A1A', borderRadius: '20px', maxWidth: '800px', width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.1)' }} onClick={(e) => e.stopPropagation()}>
-              {/* Header */}
-              <div style={{ background: '#C75B4B', padding: '1.5rem', borderRadius: '20px 20px 0 0' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <div>
-                    <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', margin: 0 }}>Internet Service Agreement</h2>
-                    <p style={{ color: 'rgba(255,255,255,0.8)', marginTop: '0.25rem' }}>Spaces Broadband at Autumn Hollow</p>
-                  </div>
-                  <button onClick={() => setShowContractModal(false)} style={{ background: 'none', border: 'none', color: '#FFFFFF', fontSize: '1.5rem', cursor: 'pointer', lineHeight: 1 }}>×</button>
-                </div>
-              </div>
-              
-              {/* Scrollable Content */}
-              <div style={{ padding: '1.5rem', overflowY: 'auto', flex: 1 }}>
-                <div style={{ fontSize: '0.9rem', color: '#CCCCCC', lineHeight: 1.7 }}>
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>PARTIES</h3>
-                    <p style={{ marginBottom: '0.5rem' }}><strong>Provider:</strong> Spaces Connect, LLC<br/>1848 S Country Hill Lane, Springfield, MO 65809</p>
-                    <p><strong>Customer:</strong> As identified in the service signup form<br/>Property: 1000 Autumn Hollow Dr, Wentzville, MO 63385</p>
-                  </section>
+    if (!selected) return null;
 
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>1. SERVICE DESCRIPTION</h3>
-                    <p>Spaces Connect agrees to provide high-speed internet service to the Customer at the property address listed above. Service includes the internet plan selected by the Customer, with speeds and features as described at the time of signup.</p>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>2. TERM AND RENEWAL</h3>
-                    <p>This Agreement begins on the service activation date and continues for the term selected by the Customer. Upon expiration of the initial term, this Agreement will automatically renew on a month-to-month basis unless either party provides written notice of termination at least thirty (30) days prior to the end of the current term.</p>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>3. PRICING AND PAYMENT</h3>
-                    <p style={{ marginBottom: '0.5rem' }}>Customer agrees to pay the monthly service fee for their selected plan, plus any applicable equipment lease fees, taxes, and one-time charges as disclosed at signup.</p>
-                    <p style={{ marginBottom: '0.5rem' }}>Payment is due on the same date each month as the original service activation. Payments can be made through the Zone customer portal or via Stripe payment processing.</p>
-                    <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '12px', padding: '1rem', margin: '1rem 0' }}>
-                      <p style={{ color: '#4CAF50' }}><strong>IF CUSTOMER QUALIFIES FOR CONTRACT DISCOUNT:</strong> Customer will receive a 10% discount on the base monthly service plan price for the duration of the contract term. This discount applies exclusively to the base plan price and does not apply to equipment lease fees, installation charges, taxes, or any other associated fees.</p>
-                    </div>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>4. EQUIPMENT</h3>
-                    <div style={{ background: 'rgba(199, 91, 75, 0.1)', border: '1px solid rgba(199, 91, 75, 0.3)', borderRadius: '12px', padding: '1rem', margin: '1rem 0' }}>
-                      <p style={{ color: '#E07A6B' }}><strong>IF LEASING ROUTER:</strong> Spaces Connect will provide a router for the Customer's use during the service term. The router remains the property of Spaces Connect. Customer is responsible for any damage to the equipment beyond normal wear and tear. Upon termination of service, Customer must return the equipment in good working condition or pay the replacement cost.</p>
-                    </div>
-                    <div style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '12px', padding: '1rem', margin: '1rem 0' }}>
-                      <p style={{ color: '#F59E0B' }}><strong>IF NOT LEASING ROUTER:</strong> Customer will use their own compatible equipment. Spaces Connect is not responsible for the performance or compatibility of customer-owned equipment.</p>
-                    </div>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>5. EARLY TERMINATION</h3>
-                    <p>If Customer terminates service before the end of their contract term, an early termination fee of <strong>$50.00 per remaining month</strong> will apply. No early termination fee applies to month-to-month customers or customers who have completed their initial contract term.</p>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>6. SERVICE LEVEL</h3>
-                    <p>Spaces Connect will make commercially reasonable efforts to provide consistent, reliable internet service. Internet speeds are provided on a "best effort" basis and may vary based on network conditions, customer equipment, and other factors. Spaces Connect does not guarantee specific speeds at all times.</p>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>7. ACCEPTABLE USE</h3>
-                    <p>Customer agrees to use the service in compliance with all applicable laws and regulations. Customer shall not use the service for any illegal purpose, to transmit harmful or malicious content, or in any way that interferes with other customers' use of the network.</p>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>8. LIMITATION OF LIABILITY</h3>
-                    <p>Spaces Connect's liability for any claim arising from this Agreement shall not exceed the total amount paid by Customer for service during the three (3) months preceding the claim. Spaces Connect shall not be liable for any indirect, incidental, or consequential damages.</p>
-                  </section>
-
-                  <section style={{ marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontWeight: '700', fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>9. CONTACT INFORMATION</h3>
-                    <p style={{ marginBottom: '0.5rem' }}>For questions, support, or to provide notice under this Agreement:</p>
-                    <p><strong>Email:</strong> sales@spacesbroadband.com</p>
-                  </section>
-
-                  <section style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem', marginTop: '1.5rem' }}>
-                    <p style={{ color: '#888888', fontStyle: 'italic' }}>By completing the online signup form and submitting your order, you acknowledge that you have read, understand, and agree to the terms and conditions of this Internet Service Agreement.</p>
-                    <div style={{ marginTop: '1rem' }}>
-                      <p style={{ fontWeight: '500', color: '#FFFFFF' }}>Spaces Connect, LLC</p>
-                      <p style={{ color: '#888888' }}>Danielle F., Operations Manager</p>
-                    </div>
-                  </section>
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div style={{ padding: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                <button onClick={() => setShowContractModal(false)} style={{ ...primaryBtnStyle, width: '100%' }}>Close</button>
-              </div>
-            </div>
-          </div>
-        );
-      };
-
-      // Step 5: Confirmation
-      if (step === 5 && selected) {
+    // Step 5: Service Confirmation
+    if (step === 5) {
         const showContractStep = formData.leaseLength === "15+" && formData.wantsContract;
         const steps = showContractStep 
-          ? [{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }]
-          : [{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }];
+            ? [{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }]
+            : [{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }];
         const currentStep = showContractStep ? 5 : 4;
         
         return (
-          <div style={containerStyle}>
-            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-              <StepIndicator steps={steps} currentStep={currentStep} />
-
-              <div style={cardStyle}>
-                <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '1.5rem', textAlign: 'center' }}>Order Confirmation</h2>
-                
-                <div style={{ marginBottom: '2rem', padding: '1.25rem', background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px' }}>
-                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Order Summary</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Tenant:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.tenant}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Unit:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.unit}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Email:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.email}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Phone:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.phone}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Plan:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{selected.name}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Lease Length:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.leaseLength === "15+" && formData.specificLeaseMonths ? `${formData.specificLeaseMonths} Months` : leaseLengthOptions.find(l => l.value === formData.leaseLength)?.label}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Router:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.leaseLength === "0-6" ? (formData.routerInfo === "byod" ? "Use Your Own" : "Leased Router") : (formData.routerInfo === "byod" ? "Bring Your Own Device" : `${selected.router.name} (Leased)`)}</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Installation:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{installOptions.find(i => i.value === formData.installOption)?.label}</span></div>
-                    {formData.leaseLength === "15+" && formData.wantsContract && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Contract:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.specificLeaseMonths ? `${formData.specificLeaseMonths}-Month Service Contract` : "Service Contract (matches lease length)"}</span></div>
-                    )}
-                  </div>
-                </div>
-
-                <div style={{ marginBottom: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
-                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Monthly Pricing</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>{selected.name} Plan</span><span>${selected.price.toFixed(2)}</span></div>
-                    {formData.routerInfo === "lease" && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>Router Lease</span><span>+${formData.leaseLength === "0-6" ? "15.00" : selected.router.leasePrice.toFixed(2)}</span></div>}
-                    {formData.leaseLength === "15+" && formData.wantsContract && <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4CAF50' }}><span>Contract Discount (10% off)</span><span>-${(selected.price * 0.10).toFixed(2)}</span></div>}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: '1.125rem', fontWeight: '700' }}><span>Monthly Total</span><span style={{ color: '#C75B4B' }}>${calculateTotal().toFixed(2)}/mo</span></div>
-                  </div>
-                  
-                  {getOneTimeTotal() > 0 && (
-                    <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                      <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '0.5rem' }}>One-Time Charges</h4>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
-                        {formData.installOption === "complete" && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>Complete Installation</span><span>$49.99</span></div>}
-                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontWeight: '700' }}><span>One-Time Total</span><span style={{ color: '#F59E0B' }}>${getOneTimeTotal().toFixed(2)}</span></div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {!orderSubmitted ? (
-                  <div style={{ display: 'flex', gap: '1rem' }}>
-                    <button onClick={handleBack} disabled={isSubmitting} style={{ ...secondaryBtnStyle, flex: 1, opacity: isSubmitting ? 0.5 : 1 }}>← Back</button>
-                    <button onClick={handleSubmitOrder} disabled={isSubmitting} style={{ ...primaryBtnStyle, flex: 1, opacity: isSubmitting ? 0.7 : 1 }}>
-                      {isSubmitting ? (
-                        <>
-                          <svg style={{ animation: 'spin 1s linear infinite', width: '1.25rem', height: '1.25rem' }} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path style={{ opacity: 0.75 }} fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                          Submitting...
-                        </>
-                      ) : 'Submit Order ✓'}
-                    </button>
-                  </div>
-                ) : (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                    {submitResult?.success ? (
-                      <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '16px', padding: '1.5rem', textAlign: 'center' }}>
-                        <div style={{ width: '4rem', height: '4rem', background: '#4CAF50', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
-                          <svg style={{ width: '2rem', height: '2rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                        </div>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#4CAF50' }}>Thank You!</h3>
-                        <p style={{ color: '#81C784', marginTop: '0.5rem' }}>Your internet service signup has been submitted successfully.</p>
-                        <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'rgba(76, 175, 80, 0.2)', borderRadius: '8px', display: 'inline-block' }}>
-                          <p style={{ fontSize: '0.875rem', color: '#A5D6A7' }}><strong>Confirmation:</strong> {formData.tenant} - Unit {formData.unit}</p>
-                          <p style={{ fontSize: '0.875rem', color: '#A5D6A7' }}><strong>Plan:</strong> {selected.name} - ${calculateTotal().toFixed(2)}/month</p>
-                        </div>
-                        <p style={{ color: '#81C784', fontSize: '0.875rem', marginTop: '1rem' }}>You will receive a confirmation email at <strong>{formData.email}</strong></p>
-                      </div>
-                    ) : (
-                      <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '16px', padding: '1.5rem', textAlign: 'center' }}>
-                        <div style={{ width: '4rem', height: '4rem', background: '#EF4444', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem' }}>
-                          <svg style={{ width: '2rem', height: '2rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                        </div>
-                        <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#EF4444' }}>Submission Error</h3>
-                        <p style={{ color: '#FCA5A5', marginTop: '0.5rem' }}>There was a problem submitting your order. Please try again or contact support.</p>
-                        <button onClick={() => { setOrderSubmitted(false); setSubmitResult(null); }} style={{ ...primaryBtnStyle, marginTop: '1rem', background: '#EF4444' }}>Try Again</button>
-                      </div>
-                    )}
-                    {submitResult?.success && (
-                      <>
-                        <div style={{ background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1rem', textAlign: 'center' }}><p style={{ color: '#888888', fontSize: '0.875rem' }}>Questions? Contact us at <strong style={{ color: '#C75B4B' }}>sales@spacesbroadband.com</strong></p></div>
-                        <button onClick={() => { setStep(1); setSelectedPlan(null); setOrderSubmitted(false); setSubmitResult(null); setFormData({ unit: "", tenant: "", email: "", phone: "", leaseLength: "7-14", specificLeaseMonths: "", routerInfo: "lease", installOption: "basic", wantsContract: false }); }} style={secondaryBtnStyle}>Start New Signup</button>
-                      </>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      // Step 4: Contract Details
-      if (step === 4 && selected && formData.leaseLength === "15+" && formData.wantsContract) {
-        return (
-          <>
-          <ContractModal />
-          <div style={containerStyle}>
-            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-              <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }]} currentStep={4} />
-
-              <div style={cardStyle}>
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '4rem', height: '4rem', background: 'rgba(76, 175, 80, 0.2)', borderRadius: '50%', marginBottom: '1rem' }}>
-                    <svg style={{ width: '2rem', height: '2rem', color: '#4CAF50' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  </div>
-                  <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', margin: 0 }}>Service Contract Details</h2>
-                  <p style={{ color: '#888888', marginTop: '0.5rem' }}>You're saving 10% with a service contract!</p>
-                </div>
-
-                <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '16px', padding: '1.5rem', marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                    <span style={{ fontSize: '1.1rem', fontWeight: '600', color: '#4CAF50' }}>Your Savings</span>
-                    <span style={{ fontSize: '1.5rem', fontWeight: '700', color: '#4CAF50' }}>-${(selected.price * 0.10).toFixed(2)}/mo</span>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem', color: '#81C784' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Original Price:</span><span>${selected.price.toFixed(2)}/mo</span></div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Contract Price:</span><span>${(selected.price * 0.90).toFixed(2)}/mo</span></div>
-                  </div>
-                </div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label style={labelStyle}>Contract Length (Months) *</label>
-                  <input
-                    type="number"
-                    name="specificLeaseMonths"
-                    value={formData.specificLeaseMonths}
-                    onChange={handleInputChange}
-                    style={inputStyle}
-                    placeholder="Enter your lease length in months (e.g. 15, 18, 24)"
-                    min="15"
-                  />
-                  <p style={{ fontSize: '0.8rem', color: '#888888', marginTop: '0.5rem' }}>Your contract will match your lease length. Minimum 15 months.</p>
-                </div>
-
-                <div style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                    <svg style={{ width: '1.25rem', height: '1.25rem', color: '#F59E0B', flexShrink: 0, marginTop: '0.125rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                    <div>
-                      <p style={{ fontWeight: '600', color: '#F59E0B', fontSize: '0.9rem' }}>Early Termination Fee</p>
-                      <p style={{ color: '#FBBF24', fontSize: '0.85rem', marginTop: '0.25rem' }}>$50.00 per remaining month if you cancel before your contract ends.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <button onClick={() => setShowContractModal(true)} style={{ width: '100%', padding: '0.75rem', background: 'transparent', border: '1px solid rgba(199, 91, 75, 0.5)', borderRadius: '8px', color: '#C75B4B', fontSize: '0.9rem', cursor: 'pointer', marginBottom: '1.5rem' }}>
-                  📄 View Full Service Agreement
-                </button>
-
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
-                  <button onClick={handleContinue} style={{ ...primaryBtnStyle, flex: 1 }}>Review Order →</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          </>
-        );
-      }
-
-      // Step 3: Options
-      if (step === 3 && selected) {
-        return (
-          <div style={containerStyle}>
-            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-              <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={3} />
-
-              <div style={cardStyle}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.5rem' }}>Customize Your Service</h2>
-                <p style={{ color: '#888888', marginBottom: '1.5rem' }}>Choose your router and installation options</p>
-
-                {/* Router Options */}
-                <div style={{ marginBottom: '2rem' }}>
-                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <svg style={{ width: '1.25rem', height: '1.25rem', color: '#C75B4B' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>
-                    Router Option
-                  </h4>
-                  
-                  {formData.leaseLength === "0-6" ? (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                      {shortTermRouterOptions.map((option) => (
-                        <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.routerInfo === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.routerInfo === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
-                          <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                            <span style={{ fontWeight: '600', color: '#FFFFFF' }}>{option.label}</span>
-                            {formData.routerInfo === option.value && (
-                              <div style={{ width: '1.25rem', height: '1.25rem', background: '#C75B4B', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg style={{ width: '0.75rem', height: '0.75rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
-                            )}
-                          </div>
-                          <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: option.price > 0 ? '#C75B4B' : '#4CAF50', fontWeight: '500' }}>{option.price > 0 ? `+$${option.price.toFixed(2)}/mo` : 'No charge'}</div>
-                          <div style={{ fontSize: '0.85rem', color: '#888888' }}>{option.description}</div>
-                        </label>
-                      ))}
-                    </div>
-                  ) : (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                      {routerOptions.map((option) => {
-                        let priceDisplay = "";
-                        let priceColor = "#888888";
-                        if (option.value === "lease") {
-                          priceDisplay = `+$${selected.router.leasePrice.toFixed(2)}/mo`;
-                          priceColor = "#C75B4B";
-                        } else {
-                          priceDisplay = "No charge";
-                          priceColor = "#4CAF50";
-                        }
+            <div className="signup-modal-overlay" onClick={onClose}>
+                <div className="signup-modal-container" onClick={(e) => e.stopPropagation()}>
+                    <button className="signup-modal-close" onClick={onClose}>×</button>
+                    <StepIndicator steps={steps} currentStep={currentStep} />
+                    <div style={cardStyle}>
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '1.5rem', textAlign: 'center' }}>Service Confirmation</h2>
                         
-                        return (
-                          <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.routerInfo === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.routerInfo === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
-                            <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                              <span style={{ fontWeight: '600', color: '#FFFFFF' }}>{option.label}</span>
-                              {formData.routerInfo === option.value && (
-                                <div style={{ width: '1.25rem', height: '1.25rem', background: '#C75B4B', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg style={{ width: '0.75rem', height: '0.75rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
-                              )}
+                        <div style={{ marginBottom: '1.5rem', padding: '1.25rem', background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px' }}>
+                            <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Order Summary</h4>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Tenant:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.tenant}</span></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Unit:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.unit}</span></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Email:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.email}</span></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Plan:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{selected.name}</span></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#888888' }}>Router:</span><span style={{ fontWeight: '500', color: '#FFFFFF' }}>{formData.routerInfo === "byod" ? "Bring Your Own" : "Leased"}</span></div>
                             </div>
-                            <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: priceColor, fontWeight: '500' }}>{priceDisplay}</div>
-                            {option.value === "lease" && <div style={{ fontSize: '0.85rem', color: '#888888' }}>Includes free maintenance & tech support</div>}
-                            {option.value === "byod" && <div style={{ fontSize: '0.85rem', color: '#888888' }}>Use your own compatible router</div>}
-                          </label>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-
-                {/* Installation Options */}
-                <div style={{ marginBottom: '2rem' }}>
-                  <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <svg style={{ width: '1.25rem', height: '1.25rem', color: '#C75B4B' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                    Installation Type
-                  </h4>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                    {installOptions.map((option) => (
-                      <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.installOption === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.installOption === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
-                        <input type="radio" name="installOption" value={option.value} checked={formData.installOption === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                          <span style={{ fontWeight: '600', color: '#FFFFFF' }}>{option.label}</span>
-                          {formData.installOption === option.value && (
-                            <div style={{ width: '1.25rem', height: '1.25rem', background: '#C75B4B', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg style={{ width: '0.75rem', height: '0.75rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg></div>
-                          )}
                         </div>
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: option.price > 0 ? '#C75B4B' : '#4CAF50', fontWeight: '500' }}>{option.price > 0 ? `$${option.price.toFixed(2)} one-time` : "FREE"}</div>
-                        {option.description && <div style={{ fontSize: '0.85rem', color: '#888888' }}>{option.description}</div>}
-                        {option.bullets && (
-                          <ul style={{ marginTop: '0.5rem', listStyle: 'none', padding: 0 }}>
-                            {option.bullets.map((bullet, idx) => <li key={idx} style={{ fontSize: '0.8rem', color: '#888888', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.25rem' }}><svg style={{ width: '1rem', height: '1rem', color: '#4CAF50', marginTop: '0.125rem', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>{bullet}</li>)}
-                          </ul>
+
+                        <div style={{ marginBottom: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem' }}>
+                            <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '0.75rem' }}>Pricing Summary</h4>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>{selected.name} Plan</span><span>${selected.price.toFixed(2)}</span></div>
+                                {formData.routerInfo === "lease" && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>Router Lease</span><span>+$5.99</span></div>}
+                                {formData.leaseLength === "15+" && formData.wantsContract && <div style={{ display: 'flex', justifyContent: 'space-between', color: '#4CAF50' }}><span>Contract Discount (10%)</span><span>-${(selected.price * 0.10).toFixed(2)}</span></div>}
+                                {formData.installOption === "complete" && <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: '#CCCCCC' }}>Complete Install (one-time)</span><span>+$49.99</span></div>}
+                                <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.1)', fontSize: '1rem', fontWeight: '600' }}><span>First Month Total</span><span style={{ color: '#FFFFFF' }}>${(calculateTotal() + getOneTimeTotal()).toFixed(2)}</span></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.125rem', fontWeight: '700' }}><span>Monthly Total</span><span style={{ color: '#C75B4B' }}>${calculateTotal().toFixed(2)}/mo</span></div>
+                            </div>
+                        </div>
+
+                        {!orderSubmitted ? (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                <div style={{ display: 'flex', gap: '1rem' }}>
+                                    <button onClick={handleBack} disabled={isSubmitting} style={{ ...secondaryBtnStyle, flex: 1, opacity: isSubmitting ? 0.5 : 1 }}>← Back</button>
+                                    <button onClick={handleSubmitOrder} disabled={isSubmitting} style={{ ...primaryBtnStyle, flex: 1, opacity: isSubmitting ? 0.7 : 1 }}>
+                                        {isSubmitting ? 'Submitting...' : 'Submit Form ✓'}
+                                    </button>
+                                </div>
+                                <p style={{ fontSize: '0.8rem', color: '#888888', textAlign: 'center', margin: 0 }}>This form is a service request only. No payment is required at this time.</p>
+                            </div>
+                        ) : (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                <div style={{ background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.05))', border: '2px solid rgba(76, 175, 80, 0.4)', borderRadius: '20px', padding: '2rem', textAlign: 'center' }}>
+                                    <div style={{ width: '5rem', height: '5rem', background: 'linear-gradient(135deg, #4CAF50, #66BB6A)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', boxShadow: '0 8px 24px rgba(76, 175, 80, 0.3)' }}>
+                                        <svg style={{ width: '2.5rem', height: '2.5rem', color: '#FFFFFF' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                                    </div>
+                                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#4CAF50', marginBottom: '0.75rem' }}>Plan Selection Submitted!</h3>
+                                    <p style={{ color: '#81C784', fontSize: '1rem', marginBottom: '1rem' }}>Your service request has been successfully submitted.</p>
+                                    <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '12px', padding: '1rem', marginTop: '1rem' }}>
+                                        <p style={{ color: '#CCCCCC', fontSize: '0.9rem', margin: 0 }}>A confirmation email has been sent to:</p>
+                                        <p style={{ color: '#FFFFFF', fontSize: '1rem', fontWeight: '600', marginTop: '0.5rem' }}>{formData.email}</p>
+                                    </div>
+                                    <p style={{ color: '#888888', fontSize: '0.85rem', marginTop: '1rem' }}>We'll be in touch shortly to finalize your service setup.</p>
+                                </div>
+                                <button onClick={onClose} style={{ ...primaryBtnStyle, width: '100%' }}>Done</button>
+                            </div>
                         )}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Contract Option for 15+ months */}
-                {formData.leaseLength === "15+" && (
-                  <div style={{ marginBottom: '2rem', padding: '1.25rem', background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05))', borderRadius: '12px', border: '1px solid rgba(76, 175, 80, 0.3)' }}>
-                    <label style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', cursor: 'pointer' }}>
-                      <input type="checkbox" name="wantsContract" checked={formData.wantsContract} onChange={handleInputChange} style={{ width: '1.25rem', height: '1.25rem', marginTop: '0.25rem', accentColor: '#4CAF50' }} />
-                      <div style={{ flex: 1 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <span style={{ fontWeight: '600', color: '#4CAF50' }}>Add a Service Contract</span>
-                          <span style={{ padding: '0.125rem 0.5rem', background: '#4CAF50', color: '#FFFFFF', fontSize: '0.7rem', fontWeight: '700', borderRadius: '4px' }}>10% OFF</span>
-                        </div>
-                        <p style={{ fontSize: '0.875rem', color: '#81C784', marginTop: '0.25rem' }}>Add a service contract to lock in your rate and get 10% off your service price. Your contract will match your lease length.</p>
-                      </div>
-                    </label>
-                  </div>
-                )}
-
-                {/* Price Summary */}
-                <div style={{ background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
-                      <div style={{ fontSize: '0.875rem', color: '#888888' }}>Monthly Total</div>
-                      <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF' }}>${calculateTotal().toFixed(2)}<span style={{ fontSize: '1rem', fontWeight: '400', color: '#888888' }}>/mo</span></div>
-                      {formData.routerInfo === "lease" && <div style={{ fontSize: '0.8rem', color: '#888888', marginTop: '0.25rem' }}>{selected.name} plan + Router lease ({formData.leaseLength === "0-6" ? "$15.00/mo" : `$${selected.router.leasePrice.toFixed(2)}/mo`})</div>}
                     </div>
-                    {getOneTimeTotal() > 0 && (
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '0.875rem', color: '#888888' }}>One-Time</div>
-                        <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#F59E0B' }}>${getOneTimeTotal().toFixed(2)}</div>
-                      </div>
-                    )}
-                  </div>
                 </div>
-
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
-                  <button onClick={handleContinue} style={{ ...primaryBtnStyle, flex: 1 }}>{formData.leaseLength === "15+" && formData.wantsContract ? "Continue to Contract →" : "Review Order →"}</button>
-                </div>
-              </div>
             </div>
-          </div>
         );
-      }
+    }
 
-      // Step 2: Customer Information
-      if (step === 2 && selected) {
+    // Step 4: Contract Details
+    if (step === 4 && formData.leaseLength === "15+" && formData.wantsContract) {
+        const contractMonths = parseInt(formData.specificLeaseMonths) || 0;
+        const monthlySavings = selected.price * 0.10;
+        const totalContractSavings = monthlySavings * contractMonths;
+        
         return (
-          <div style={containerStyle}>
-            <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-              <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={2} />
+            <div className="signup-modal-overlay" onClick={onClose}>
+                <div className="signup-modal-container" onClick={(e) => e.stopPropagation()}>
+                    <button className="signup-modal-close" onClick={onClose}>×</button>
+                    <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Contract" }, { num: 5, label: "Confirm" }]} currentStep={4} />
+                    <div style={cardStyle}>
+                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                            <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF' }}>Service Contract Details</h2>
+                            <p style={{ color: '#4CAF50', marginTop: '0.5rem' }}>You're saving 10% with a service contract!</p>
+                        </div>
 
-              <div style={cardStyle}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.5rem' }}>Customer Information</h2>
-                <p style={{ color: '#888888', marginBottom: '1.5rem' }}>Tell us about yourself</p>
+                        <div style={{ background: 'rgba(76, 175, 80, 0.1)', border: '1px solid rgba(76, 175, 80, 0.3)', borderRadius: '16px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                                <span style={{ fontWeight: '600', color: '#4CAF50' }}>Your Savings</span>
+                                <span style={{ fontSize: '1.25rem', fontWeight: '700', color: '#4CAF50' }}>-${monthlySavings.toFixed(2)}/mo</span>
+                            </div>
+                            <div style={{ fontSize: '0.9rem', color: '#81C784' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Original:</span><span>${selected.price.toFixed(2)}/mo</span></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Contract:</span><span>${(selected.price * 0.90).toFixed(2)}/mo</span></div>
+                            </div>
+                        </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                    <div>
-                      <label style={labelStyle}>Tenant Name *</label>
-                      <input type="text" name="tenant" value={formData.tenant} onChange={handleInputChange} style={inputStyle} placeholder="Full name" />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Unit Number *</label>
-                      <input type="text" name="unit" value={formData.unit} onChange={handleInputChange} style={inputStyle} placeholder="e.g. 1101" />
-                    </div>
-                  </div>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <label style={labelStyle}>Contract Length (Months) *</label>
+                            <p style={{ fontSize: '0.85rem', color: '#CCCCCC', marginBottom: '0.75rem' }}>Your contract will match your lease length, ensuring you receive the 10% discount for your entire stay. Please enter your specific lease duration below.</p>
+                            <input type="number" name="specificLeaseMonths" value={formData.specificLeaseMonths} onChange={handleInputChange} style={inputStyle} placeholder="e.g. 15, 18, 24" min="15" />
+                            {contractMonths >= 15 && (
+                                <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: 'rgba(76, 175, 80, 0.1)', borderRadius: '8px', border: '1px solid rgba(76, 175, 80, 0.3)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <span style={{ fontSize: '0.9rem', color: '#81C784' }}>Total Savings Over {contractMonths} Months:</span>
+                                        <span style={{ fontSize: '1.1rem', fontWeight: '700', color: '#4CAF50' }}>${totalContractSavings.toFixed(2)}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                    <div>
-                      <label style={labelStyle}>Email Address *</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleInputChange} style={inputStyle} placeholder="your@email.com" />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Phone Number *</label>
-                      <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} style={inputStyle} placeholder="(555) 123-4567" />
-                    </div>
-                  </div>
+                        <div style={{ background: 'rgba(42, 42, 42, 0.5)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                            <h4 style={{ fontWeight: '600', color: '#FFFFFF', marginBottom: '1rem', fontSize: '1rem' }}>Key Contract Terms</h4>
+                            <ul style={{ margin: 0, padding: 0, listStyle: 'none', fontSize: '0.85rem', color: '#CCCCCC' }}>
+                                <li style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                                    <span style={{ color: '#888888' }}>•</span>
+                                    <span><strong style={{ color: '#FFFFFF' }}>Early Termination Fee:</strong> $50 fee applies if service is cancelled before contract end date</span>
+                                </li>
+                                <li style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                                    <span style={{ color: '#888888' }}>•</span>
+                                    <span><strong style={{ color: '#FFFFFF' }}>Automatic Renewal:</strong> Contract automatically renews month-to-month unless written notice is provided</span>
+                                </li>
+                                <li style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                                    <span style={{ color: '#888888' }}>•</span>
+                                    <span><strong style={{ color: '#FFFFFF' }}>10% Discount:</strong> Applies exclusively to the base monthly service plan price, not to equipment lease fees, installation charges, or taxes</span>
+                                </li>
+                                <li style={{ marginBottom: '0.75rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                                    <span style={{ color: '#888888' }}>•</span>
+                                    <span><strong style={{ color: '#FFFFFF' }}>Equipment:</strong> Customer is responsible for any damage to leased equipment beyond normal wear and tear</span>
+                                </li>
+                                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                                    <span style={{ color: '#888888' }}>•</span>
+                                    <span><strong style={{ color: '#FFFFFF' }}>Payment:</strong> Service may be suspended if payment is not received; payments can be made through the customer portal</span>
+                                </li>
+                            </ul>
+                        </div>
 
-                  <div>
-                    <label style={labelStyle}>Lease Length *</label>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
-                      {leaseLengthOptions.map((option) => (
-                        <label key={option.value} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', border: `2px solid ${formData.leaseLength === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.leaseLength === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent', transition: 'all 0.3s ease' }}>
-                          <input type="radio" name="leaseLength" value={option.value} checked={formData.leaseLength === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
-                          <span style={{ fontWeight: '500', color: formData.leaseLength === option.value ? '#C75B4B' : '#CCCCCC' }}>{option.label}</span>
-                        </label>
-                      ))}
+                        {/* Price Summary */}
+                        <div style={{ background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div>
+                                    <div style={{ fontSize: '0.875rem', color: '#888888' }}>Monthly Total</div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF' }}>${calculateTotal().toFixed(2)}<span style={{ fontSize: '1rem', fontWeight: '400', color: '#888888' }}>/mo</span></div>
+                                </div>
+                                <div style={{ textAlign: 'right' }}>
+                                    <div style={{ fontSize: '0.875rem', color: '#888888' }}>First Month Total</div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#C75B4B' }}>${(calculateTotal() + getOneTimeTotal()).toFixed(2)}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style={{ width: '100%', padding: '1rem', background: 'rgba(199, 91, 75, 0.1)', border: '1px solid rgba(199, 91, 75, 0.3)', borderRadius: '12px', marginBottom: '1.5rem', textAlign: 'center' }}>
+                            <p style={{ color: '#C75B4B', fontSize: '0.9rem', margin: 0, fontWeight: '500' }}>The full service agreement will be emailed to you before service is started for review and signature.</p>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
+                            <button onClick={handleContinue} style={{ ...primaryBtnStyle, flex: 1 }}>Review Order →</button>
+                        </div>
                     </div>
-                  </div>
                 </div>
-
-                <div style={{ marginTop: '2rem', background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div>
-                      <div style={{ fontSize: '1.125rem', fontWeight: '700', color: '#FFFFFF' }}>{selected.name} Plan</div>
-                      <div style={{ color: '#888888' }}>{selected.speed} Mbps</div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#C75B4B' }}>${selected.price.toFixed(2)}</div>
-                      <div style={{ color: '#888888', fontSize: '0.875rem' }}>/month</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                  <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
-                  <button onClick={handleContinue} disabled={!isFormValid()} style={{ ...primaryBtnStyle, flex: 1, opacity: isFormValid() ? 1 : 0.5, cursor: isFormValid() ? 'pointer' : 'not-allowed' }}>Continue →</button>
-                </div>
-              </div>
             </div>
-          </div>
         );
-      }
+    }
 
-      // Step 1: Plan Selection
-      return (
-        <div style={containerStyle}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-              <span style={{ display: 'inline-block', color: '#C75B4B', fontFamily: 'Space Mono, monospace', fontSize: '0.85rem', letterSpacing: '2px', marginBottom: '0.5rem' }}>// AUTUMN HOLLOW</span>
-              <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#FFFFFF', marginBottom: '0.75rem', letterSpacing: '-1px' }}>Choose Your <span style={{ color: '#C75B4B' }}>Plan</span></h1>
-              <p style={{ color: '#888888', fontSize: '1.125rem' }}>Lightning-fast fiber internet for your apartment</p>
-            </div>
+    // Step 3: Options
+    if (step === 3) {
+        return (
+            <div className="signup-modal-overlay" onClick={onClose}>
+                <div className="signup-modal-container" onClick={(e) => e.stopPropagation()}>
+                    <button className="signup-modal-close" onClick={onClose}>×</button>
+                    <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={3} />
+                    <div style={cardStyle}>
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.5rem' }}>Customize Your Service</h2>
+                        <p style={{ color: '#888888', marginBottom: '1.5rem' }}>Choose your router and installation options</p>
 
-            <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={1} />
+                        {/* Router Options */}
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Router Option</h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                {routerOptions.map((option) => {
+                                    const priceDisplay = option.value === "lease" ? "+$5.99/mo" : "No charge";
+                                    const priceColor = option.value === "lease" ? "#C75B4B" : "#4CAF50";
+                                    return (
+                                        <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.routerInfo === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.routerInfo === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent' }}>
+                                            <input type="radio" name="routerInfo" value={option.value} checked={formData.routerInfo === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                                            <span style={{ fontWeight: '600', color: '#FFFFFF', marginBottom: '0.5rem' }}>{option.label}</span>
+                                            <span style={{ fontSize: '0.9rem', color: priceColor, fontWeight: '500' }}>{priceDisplay}</span>
+                                            {option.description && <span style={{ fontSize: '0.8rem', color: '#888888', marginTop: '0.25rem' }}>{option.description}</span>}
+                                        </label>
+                                    );
+                                })}
+                            </div>
+                        </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-              {plans.map((plan) => (
-                <div
-                  key={plan.id}
-                  onClick={() => handleSelect(plan.id)}
-                  style={{
-                    position: 'relative',
-                    background: 'rgba(26, 26, 26, 0.95)',
-                    border: `2px solid ${selectedPlan === plan.id ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`,
-                    borderRadius: '20px',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    transform: selectedPlan === plan.id ? 'scale(1.02)' : 'scale(1)',
-                    boxShadow: selectedPlan === plan.id ? '0 20px 40px rgba(199, 91, 75, 0.2)' : 'none',
-                  }}
-                >
-                  {plan.badge && (
-                    <div style={{ position: 'absolute', top: 0, right: 0, background: '#C75B4B', color: '#FFFFFF', padding: '0.25rem 1rem', fontSize: '0.75rem', fontWeight: '700', borderBottomLeftRadius: '12px' }}>{plan.badge}</div>
-                  )}
-                  <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.25rem' }}>{plan.name}</h3>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem' }}>
-                      <span style={{ fontSize: '2.5rem', fontWeight: '800', color: '#C75B4B' }}>${plan.price.toFixed(2)}</span>
-                      <span style={{ color: '#888888' }}>/mo</span>
+                        {/* Installation Options */}
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <h4 style={{ fontWeight: '600', color: '#CCCCCC', marginBottom: '1rem' }}>Installation Type</h4>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                {installOptions.map((option) => (
+                                    <label key={option.value} style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '1.25rem', border: `2px solid ${formData.installOption === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.installOption === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent' }}>
+                                        <input type="radio" name="installOption" value={option.value} checked={formData.installOption === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                                        <span style={{ fontWeight: '600', color: '#FFFFFF', marginBottom: '0.5rem' }}>{option.label}</span>
+                                        <span style={{ fontSize: '0.9rem', color: option.price > 0 ? '#C75B4B' : '#4CAF50', fontWeight: '500' }}>{option.price > 0 ? `$${option.price.toFixed(2)} one-time` : "FREE"}</span>
+                                        {option.description && <span style={{ fontSize: '0.8rem', color: '#888888', marginTop: '0.25rem' }}>{option.description}</span>}
+                                        {option.bullets && (
+                                            <ul style={{ margin: '0.5rem 0 0 0', padding: 0, fontSize: '0.75rem', color: '#888888', listStyle: 'none' }}>
+                                                {option.bullets.map((bullet, idx) => (
+                                                    <li key={idx} style={{ marginBottom: '0.25rem', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" strokeWidth="3" style={{ flexShrink: 0, marginTop: '2px' }}><polyline points="20 6 9 17 4 12" /></svg>
+                                                        {bullet}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Contract Option */}
+                        {formData.leaseLength === "15+" && (
+                            <div style={{ marginBottom: '1.5rem', padding: '1.25rem', background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05))', borderRadius: '12px', border: '1px solid rgba(76, 175, 80, 0.3)' }}>
+                                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', cursor: 'pointer' }}>
+                                    <input type="checkbox" name="wantsContract" checked={formData.wantsContract} onChange={handleInputChange} style={{ width: '1.25rem', height: '1.25rem', marginTop: '0.25rem', accentColor: '#4CAF50' }} />
+                                    <div>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <span style={{ fontWeight: '600', color: '#4CAF50' }}>Add a Service Contract</span>
+                                            <span style={{ padding: '0.125rem 0.5rem', background: '#4CAF50', color: '#FFFFFF', fontSize: '0.7rem', fontWeight: '700', borderRadius: '4px' }}>10% OFF</span>
+                                        </div>
+                                        <p style={{ fontSize: '0.85rem', color: '#81C784', marginTop: '0.25rem' }}>Add a service contract to lock in your rate and get 10% off your service price. Your contract will match your lease length.</p>
+                                    </div>
+                                </label>
+                            </div>
+                        )}
+
+                        {/* Price Summary */}
+                        <div style={{ background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div>
+                                    <div style={{ fontSize: '0.875rem', color: '#888888' }}>Monthly Total</div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF' }}>${calculateTotal().toFixed(2)}<span style={{ fontSize: '1rem', fontWeight: '400', color: '#888888' }}>/mo</span></div>
+                                </div>
+                                <div style={{ textAlign: 'right' }}>
+                                    <div style={{ fontSize: '0.875rem', color: '#888888' }}>First Month Total</div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#C75B4B' }}>${(calculateTotal() + getOneTimeTotal()).toFixed(2)}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
+                            <button onClick={handleContinue} style={{ ...primaryBtnStyle, flex: 1 }}>{formData.leaseLength === "15+" && formData.wantsContract ? "Continue to Contract →" : "Review Order →"}</button>
+                        </div>
                     </div>
-                    <div style={{ marginTop: '0.5rem', color: '#888888' }}>{plan.speed} Mbps</div>
-                  </div>
-                  <div style={{ padding: '1.5rem' }}>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                      {plan.features.map((feature, idx) => (
-                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#CCCCCC', marginBottom: '0.75rem' }}>
-                          <svg style={{ width: '1.25rem', height: '1.25rem', color: '#4CAF50', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <div style={{
-                      marginTop: '1.5rem',
-                      padding: '0.875rem',
-                      borderRadius: '12px',
-                      textAlign: 'center',
-                      fontWeight: '600',
-                      background: selectedPlan === plan.id ? '#C75B4B' : 'rgba(255,255,255,0.05)',
-                      color: selectedPlan === plan.id ? '#FFFFFF' : '#888888',
-                      transition: 'all 0.3s ease',
-                    }}>
-                      {selectedPlan === plan.id ? '✓ Selected' : 'Select Plan'}
-                    </div>
-                  </div>
                 </div>
-              ))}
             </div>
+        );
+    }
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <button
-                onClick={handleContinue}
-                disabled={!selectedPlan}
-                style={{
-                  ...primaryBtnStyle,
-                  padding: '1rem 3rem',
-                  fontSize: '1.125rem',
-                  opacity: selectedPlan ? 1 : 0.5,
-                  cursor: selectedPlan ? 'pointer' : 'not-allowed',
-                }}
-              >
-                {selectedPlan ? 'Continue →' : 'Select a Plan to Continue'}
-              </button>
-            </div>
+    // Step 2: Customer Information
+    return (
+        <div className="signup-modal-overlay" onClick={onClose}>
+            <div className="signup-modal-container" onClick={(e) => e.stopPropagation()}>
+                <button className="signup-modal-close" onClick={onClose}>×</button>
+                <StepIndicator steps={[{ num: 1, label: "Plan" }, { num: 2, label: "Info" }, { num: 3, label: "Options" }, { num: 4, label: "Confirm" }]} currentStep={2} />
+                <div style={cardStyle}>
+                    <h2 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF', marginBottom: '0.5rem' }}>Customer Information</h2>
+                    <p style={{ color: '#888888', marginBottom: '1.5rem' }}>Tell us about yourself</p>
 
-            <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
-              <p style={{ color: '#888888', fontSize: '0.875rem' }}>All plans include unlimited data • No hidden fees • 30-day money-back guarantee</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                            <div>
+                                <label style={labelStyle}>Tenant Name *</label>
+                                <input type="text" name="tenant" value={formData.tenant} onChange={handleInputChange} style={inputStyle} placeholder="Full name" />
+                            </div>
+                            <div>
+                                <label style={labelStyle}>Unit Number *</label>
+                                <input type="text" name="unit" value={formData.unit} onChange={handleInputChange} style={inputStyle} placeholder="e.g. 1101" />
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                            <div>
+                                <label style={labelStyle}>Email Address *</label>
+                                <input type="email" name="email" value={formData.email} onChange={handleInputChange} style={inputStyle} placeholder="your@email.com" />
+                            </div>
+                            <div>
+                                <label style={labelStyle}>Phone Number *</label>
+                                <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} style={inputStyle} placeholder="(555) 123-4567" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label style={labelStyle}>Lease Length *</label>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
+                                {leaseLengthOptions.map((option) => (
+                                    <label key={option.value} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', border: `2px solid ${formData.leaseLength === option.value ? '#C75B4B' : 'rgba(255,255,255,0.1)'}`, borderRadius: '12px', cursor: 'pointer', background: formData.leaseLength === option.value ? 'rgba(199, 91, 75, 0.1)' : 'transparent' }}>
+                                        <input type="radio" name="leaseLength" value={option.value} checked={formData.leaseLength === option.value} onChange={handleInputChange} style={{ position: 'absolute', opacity: 0 }} />
+                                        <span style={{ fontWeight: '500', color: formData.leaseLength === option.value ? '#C75B4B' : '#CCCCCC' }}>{option.label}</span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{ marginTop: '1.5rem', background: 'rgba(42, 42, 42, 0.5)', borderRadius: '12px', padding: '1.25rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div>
+                                <div style={{ fontSize: '1.125rem', fontWeight: '700', color: '#FFFFFF' }}>{selected.name} Plan</div>
+                                <div style={{ color: '#888888' }}>{selected.speed} Mbps</div>
+                            </div>
+                            <div style={{ textAlign: 'right' }}>
+                                <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#FFFFFF' }}>${selected.price.toFixed(2)}/mo</div>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>
+                                <div style={{ fontSize: '0.875rem', color: '#888888' }}>Monthly Total</div>
+                                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#FFFFFF' }}>${calculateTotal().toFixed(2)}<span style={{ fontSize: '1rem', fontWeight: '400', color: '#888888' }}>/mo</span></div>
+                            </div>
+                            <div style={{ textAlign: 'right' }}>
+                                <div style={{ fontSize: '0.875rem', color: '#888888' }}>First Month Total</div>
+                                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#C75B4B' }}>${(calculateTotal() + getOneTimeTotal()).toFixed(2)}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+                        <button onClick={handleBack} style={{ ...secondaryBtnStyle, flex: 1 }}>← Back</button>
+                        <button onClick={handleContinue} disabled={!isFormValid()} style={{ ...primaryBtnStyle, flex: 1, opacity: isFormValid() ? 1 : 0.5, cursor: isFormValid() ? 'pointer' : 'not-allowed' }}>Continue →</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      );
-    }
+    );
+}
+</script>
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<PlanSelector />);
-  </script>
-  <style>
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-  </style>
-</body>
-</html>
+<script>
+// FAQ Toggle functionality
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        faqItem.classList.toggle('active');
+    });
+});
+</script>
